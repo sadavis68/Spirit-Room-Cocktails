@@ -191,10 +191,9 @@
     "tastingEntries": []
   },
   {
-    "id": "smoke-and-brine-manhattan",
-    "category": "Bourbon & Rye Signatures",
-    "status": "finalized",
     "name": "Smoke & Brine Manhattan",
+    "category": "Bourbon & Rye Signatures",
+    "status": "named",
     "spirit": "Rye whiskey",
     "ingredients": [
       "2 oz rye whiskey",
@@ -207,6 +206,7 @@
     "notes": "Variations to try: swap saline for a light fino sherry rinse (short shelf life — buy small format); or add a barspoon rinse of peated Islay Scotch for smoke baked into the liquid itself.",
     "nameStory": "States the drink's smoke dome + saline elements directly. Manhattan itself is reached by water.",
     "source": "",
+    "id": "smoke-and-brine-manhattan",
     "tastingEntries": []
   },
   {
