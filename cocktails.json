@@ -427,10 +427,9 @@
     "tastingEntries": []
   },
   {
-    "id": "mad-captain",
-    "category": "Tiki Cocktails",
-    "status": "finalized",
     "name": "Mad Captain",
+    "category": "Tiki Cocktails",
+    "status": "named",
     "spirit": "Dark rum",
     "ingredients": [
       "2 oz dark rum",
@@ -444,6 +443,7 @@
     "notes": "Chill glass first (coupe or rocks both work).",
     "nameStory": "Nautical.",
     "source": "",
+    "id": "mad-captain",
     "tastingEntries": []
   },
   {
