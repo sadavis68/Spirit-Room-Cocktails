@@ -408,10 +408,9 @@
     "tastingEntries": []
   },
   {
-    "id": "ahoy-molly",
-    "category": "Aperitif/Lowball",
-    "status": "finalized",
     "name": "Ahoy Molly",
+    "category": "Aperitif/Lowball",
+    "status": "named",
     "spirit": "None (vermouth + absinthe forward, low-ABV)",
     "ingredients": [
       "3 oz Dolin Blanc vermouth",
@@ -424,6 +423,7 @@
     "notes": "Created by Sother Teague, beverage director at Amor y Amargo (NYC). Dolin Blanc has 32 botanicals including hibiscus, basil, and cinnamon.",
     "nameStory": "Nautical greeting, named for the user's niece Molly.",
     "source": "Magazine feature (image upload)",
+    "id": "ahoy-molly",
     "tastingEntries": []
   },
   {
