@@ -346,10 +346,9 @@
     "tastingEntries": []
   },
   {
-    "id": "land-ho",
-    "category": "Tequila/Mezcal",
-    "status": "finalized",
     "name": "Land Ho!",
+    "category": "Tequila/Mezcal",
+    "status": "named",
     "spirit": "Blanco tequila",
     "ingredients": [
       "1.35 oz blanco tequila",
@@ -363,6 +362,7 @@
     "notes": "A Paloma riff created by Ryan Ota (Paper Plane, San Jose). Don't over-shake — leave room to top with soda.",
     "nameStory": "The classic sailor's cry upon first sighting land; ties to the historical tradition of doves/pigeons signaling land was near, echoing \"Colomba\"/dove and its Paloma namesake.",
     "source": "Decanter, July 2026",
+    "id": "land-ho",
     "tastingEntries": []
   },
   {
