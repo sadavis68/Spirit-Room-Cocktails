@@ -153,10 +153,9 @@
     "tastingEntries": []
   },
   {
-    "id": "the-loggerhead",
-    "category": "Bourbon & Rye Signatures",
-    "status": "finalized",
     "name": "The Loggerhead",
+    "category": "Bourbon & Rye Signatures",
+    "status": "named",
     "spirit": "Bourbon (wheated, e.g. Maker's Mark)",
     "ingredients": [
       "2 oz bourbon",
@@ -169,6 +168,7 @@
     "notes": "Simplified from the original (crème de cacao + butterscotch schnapps) to reuse the Spirit Room's Magic Syrup. Flagged as very similar to Spirit Room — keeping both for now to compare after tasting.",
     "nameStory": "A \"loggerhead\" was the red-hot iron rod historically plunged into flip drinks to warm and froth them — genuine flip-cocktail history.",
     "source": "",
+    "id": "the-loggerhead",
     "tastingEntries": []
   },
   {
