@@ -133,10 +133,9 @@
     "tastingEntries": []
   },
   {
-    "id": "capn-wheel",
+    "name": "Cap'n Krunch",
     "category": "Bourbon & Rye Signatures",
     "status": "draft",
-    "name": "The Cap'n's Wheel (placeholder name)",
     "spirit": "Cap'n Crunch-infused bourbon/rye blend",
     "ingredients": [
       "2 oz Cap'n Crunch-infused whiskey blend (3 cups Old Grand-Dad bonded bourbon + 1 cup Rittenhouse rye, infused 24 hrs with 2 cups Cap'n Crunch, then strained)",
@@ -150,6 +149,7 @@
     "notes": "User wants to call this \"Cap'n Crunch\" on their own personal menu; kept as a neutral placeholder name in this tracker since it's a trademarked character. Riff on The Godfather, created by Patrick Jennings at Andra Hem, Philadelphia.",
     "nameStory": "",
     "source": "Whisky Advocate",
+    "id": "capn-wheel",
     "tastingEntries": []
   },
   {
