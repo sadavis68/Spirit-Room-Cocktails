@@ -270,10 +270,9 @@
     "tastingEntries": []
   },
   {
-    "id": "the-sirens-call",
-    "category": "Bourbon & Rye Signatures",
-    "status": "finalized",
     "name": "The Siren's Call",
+    "category": "Bourbon & Rye Signatures",
+    "status": "named",
     "spirit": "Split base — rye whiskey + dark rum (50% ABV)",
     "ingredients": [
       "1 oz rye whiskey",
@@ -286,6 +285,7 @@
     "notes": "Split-base riff on the Boulevardier — dark rum replaces half the whiskey, Aperol replaces Campari for brighter, less medicinal bitterness. Garnish: \"Siren's Sail\" — wide orange peel cut into a sail shape, pierced with a black bamboo pick.",
     "nameStory": "Mythological sea sirens, luring with sweetness then holding captive with bitterness.",
     "source": "Personal recipe development",
+    "id": "the-sirens-call",
     "tastingEntries": []
   },
   {
