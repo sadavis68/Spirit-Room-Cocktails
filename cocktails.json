@@ -78,10 +78,9 @@
     "tastingEntries": []
   },
   {
-    "id": "stepes-even-keel",
+    "name": "Stipe's Even Keel",
     "category": "Old Fashioned Variations",
     "status": "named",
-    "name": "Stepe's Even Keel",
     "spirit": "Bourbon",
     "ingredients": [
       "Classic Old Fashioned ratios TBD"
@@ -90,6 +89,7 @@
     "notes": "Classic Old Fashioned with adjusted ratios for Stepe (Croatian, drink is a favorite of the ladies).",
     "nameStory": "\"Even keel\" = balanced and steady, fitting since it's the classic ratio rebalanced.",
     "source": "",
+    "id": "stepes-even-keel",
     "tastingEntries": []
   },
   {
