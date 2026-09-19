@@ -1,9 +1,8 @@
 [
   {
-    "id": "green-flash",
-    "category": "Old Fashioned Variations",
-    "status": "finalized",
     "name": "Green Flash",
+    "category": "Old Fashioned Variations",
+    "status": "named",
     "spirit": "Bourbon (high-proof, e.g. Elijah Craig, Wild Turkey 101)",
     "ingredients": [
       "2 oz bourbon (high-proof)",
@@ -16,6 +15,7 @@
     "notes": "Chartreuse replaces the sugar — no simple syrup needed. Start at ¼ oz, don't overdo it (110 proof). The flamed peel is the drink's namesake moment.",
     "nameStory": "Named for the green flash: an optical phenomenon sometimes seen at sea right at sunset over the ocean.",
     "source": "",
+    "id": "green-flash",
     "tastingEntries": []
   },
   {
