@@ -388,10 +388,9 @@
     "tastingEntries": []
   },
   {
-    "id": "sozzled-sandpiper",
-    "category": "Vodka",
-    "status": "finalized",
     "name": "The Sozzled Sandpiper",
+    "category": "Vodka",
+    "status": "named",
     "spirit": "Vodka (Vesper-style martini riff)",
     "ingredients": [
       "1.5 oz Tito's Handmade Vodka",
@@ -405,6 +404,7 @@
     "notes": "Created by Cello Ritondo, lead bartender at Next Door by Wegmans (NYC). Inspired by the traditional Vesper + Japanese cuisine. Pairs well with sashimi/maki.",
     "nameStory": "Coastal bird theme (sandpiper) + \"sozzled\" (drunk slang), matching the boozy Vesper-style profile.",
     "source": "Magazine feature (image upload)",
+    "id": "sozzled-sandpiper",
     "tastingEntries": []
   },
   {
