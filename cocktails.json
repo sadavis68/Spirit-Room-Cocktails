@@ -58,10 +58,9 @@
     "tastingEntries": []
   },
   {
-    "id": "full-fathom-five",
-    "category": "Old Fashioned Variations",
-    "status": "finalized",
     "name": "Full Fathom Five",
+    "category": "Old Fashioned Variations",
+    "status": "named",
     "spirit": "Split base — Knob Creek Smoked Maple bourbon + regular bourbon",
     "ingredients": [
       "1 oz Knob Creek Smoked Maple bourbon",
@@ -75,6 +74,7 @@
     "notes": "Alt fat-wash version: 2 oz bourbon, ¼ oz maple syrup, 4 dashes Fee Brothers Browned Butter fat wash, lemon peel garnish — simpler build, worth taste-testing both.",
     "nameStory": "From Shakespeare's The Tempest — \"something rich and strange.\"",
     "source": "",
+    "id": "full-fathom-five",
     "tastingEntries": []
   },
   {
