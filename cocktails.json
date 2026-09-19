@@ -366,10 +366,9 @@
     "tastingEntries": []
   },
   {
-    "id": "midwatch-sour",
-    "category": "Tequila/Mezcal",
-    "status": "finalized",
     "name": "Midwatch Sour",
+    "category": "Tequila/Mezcal",
+    "status": "named",
     "spirit": "Mezcal + amaro",
     "ingredients": [
       "1.5 oz mezcal",
@@ -385,6 +384,7 @@
     "notes": "Created by Pete St. Pete, Beverage Director at Capri Club.",
     "nameStory": "Midwatch: the real naval term for the overnight watch, midnight to 4am — fits a late-night pour.",
     "source": "Magazine feature (image upload)",
+    "id": "midwatch-sour",
     "tastingEntries": []
   },
   {
