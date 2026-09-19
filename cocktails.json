@@ -469,10 +469,9 @@
     "tastingEntries": []
   },
   {
-    "id": "powder-monkey",
+    "name": "Powder Monkey (Big Poppa's Return)",
     "category": "Tiki Cocktails",
     "status": "named",
-    "name": "Powder Monkey (Big Poppa's Return)",
     "spirit": "Rhum agricole + banana liqueur",
     "ingredients": [
       "2 oz rhum agricole (blanc or vieux)",
@@ -486,6 +485,7 @@
     "notes": "Modeled on the version at CANE TiKi Room, Paso Robles ($16 on their menu). Exact proportions aren't published — this is a best-estimate clone to taste-test and adjust.",
     "nameStory": "\"Powder monkey\" = historic term for the young sailors who carried gunpowder to a ship's cannons. Nods to Peter's nickname \"Big Poppa.\"",
     "source": "Personal menu photo + reconstructed recipe",
+    "id": "powder-monkey",
     "tastingEntries": []
   }
 ]
