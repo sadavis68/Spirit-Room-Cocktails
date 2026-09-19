@@ -231,10 +231,9 @@
     "tastingEntries": []
   },
   {
-    "id": "the-dead-reckoning",
-    "category": "Bourbon & Rye Signatures",
-    "status": "finalized",
     "name": "The Dead Reckoning",
+    "category": "Bourbon & Rye Signatures",
+    "status": "named",
     "spirit": "Bourbon (Rabbit Hole Cavehill specified)",
     "ingredients": [
       "2 oz bourbon",
@@ -248,6 +247,7 @@
     "notes": "Riff on the classic Paper Plane — swaps a house amaro blend for Amaro Nonino, adds Fernet-Branca for extra bitterness.",
     "nameStory": "Dead reckoning: navigating by estimated calculation rather than fixed landmarks — fitting since this riff estimates the classic's amaro component with a substitute blend.",
     "source": "Personal email (Scott Davis)",
+    "id": "the-dead-reckoning",
     "tastingEntries": []
   },
   {
