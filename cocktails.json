@@ -210,10 +210,9 @@
     "tastingEntries": []
   },
   {
-    "id": "squall-line",
-    "category": "Bourbon & Rye Signatures",
-    "status": "finalized",
     "name": "Squall Line",
+    "category": "Bourbon & Rye Signatures",
+    "status": "named",
     "spirit": "Rye (split base with Jamaican rum)",
     "ingredients": [
       "¾ oz Rittenhouse bottled-in-bond rye (or other 100-proof rye)",
@@ -228,6 +227,7 @@
     "notes": "A rye-forward riff on the classic Jungle Bird.",
     "nameStory": "A fast-moving storm front — keeps the punchy \"Thunder\" energy of the original name (formerly Thunder Bird), fully nautical.",
     "source": "Whisky Advocate (Aug 2026)",
+    "id": "squall-line",
     "tastingEntries": []
   },
   {
