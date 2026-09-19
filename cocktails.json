@@ -38,13 +38,12 @@
     "tastingEntries": []
   },
   {
-    "id": "marcys-windfall",
+    "name": "Marcy's Windfall",
     "category": "Old Fashioned Variations",
     "status": "finalized",
-    "name": "Marcy's Windfall",
-    "spirit": "Bourbon (higher proof, 100+)",
+    "spirit": "Bourbon",
     "ingredients": [
-      "2 oz bourbon (high proof)",
+      "2 oz bourbon (higher proof preferred)",
       "½ oz banana liqueur",
       "¼ oz Demerara syrup",
       "2 dashes black walnut bitters",
@@ -55,6 +54,7 @@
     "notes": "Use higher-proof bourbon (100+) or it can get too sweet.",
     "nameStory": "Named for the user's sister-in-law Marcy, who this drink converted into an Old Fashioned fan. \"Windfall\" = an unexpected favorable wind / unexpected good fortune.",
     "source": "",
+    "id": "marcys-windfall",
     "tastingEntries": []
   },
   {
