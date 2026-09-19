@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Ledger — Speakeasy Cocktail Tracker</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #100c09; --bg-panel: #1a1410; --bg-card: #221a14; --bg-card-hover: #2b2119;
+    --border: #3a2c1e; --border-light: #4d3b28; --gold: #c9a24a; --gold-bright: #e0bd6a;
+    --gold-dim: #8a7040; --red: #7a2222; --red-bright: #a5322f;
+    --text: #e8ddc9; --text-dim: #a9997d; --text-faint: #6f6350;
+    --font-head: 'Cinzel', serif; --font-body: 'EB Garamond', Georgia, serif;
+  }
+  :root:not([data-theme="light"]) { color-scheme: dark; }
+  @media (prefers-color-scheme: light) {
+    :root:not([data-theme="dark"]) {
+      --bg: #f3ede0; --bg-panel: #ffffff; --bg-card: #fbf7ee; --bg-card-hover: #f4ecd8;
+      --border: #d8c9a8; --border-light: #c4b28a; --gold: #96741f; --gold-bright: #7a5c14;
+      --gold-dim: #a98d4a; --red: #7a2222; --red-bright: #a5322f;
+      --text: #2a2013; --text-dim: #5a4c34; --text-faint: #8a7a5c;
+    }
+  }
+  :root[data-theme="light"] {
+    --bg: #f3ede0; --bg-panel: #ffffff; --bg-card: #fbf7ee; --bg-card-hover: #f4ecd8;
+    --border: #d8c9a8; --border-light: #c4b28a; --gold: #96741f; --gold-bright: #7a5c14;
+    --gold-dim: #a98d4a; --red: #7a2222; --red-bright: #a5322f;
+    --text: #2a2013; --text-dim: #5a4c34; --text-faint: #8a7a5c;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg);
+    background-image: radial-gradient(ellipse at top, rgba(201,162,74,0.06), transparent 60%),
+      repeating-linear-gradient(0deg, rgba(0,0,0,0.15) 0px, rgba(0,0,0,0.15) 1px, transparent 1px, transparent 3px);
+    color: var(--text); font-family: var(--font-body); font-size: 17px; line-height: 1.5; min-height: 100vh;
+  }
+  header { padding: 28px 20px 18px; text-align: center; border-bottom: 1px solid var(--border); background: linear-gradient(180deg, rgba(201,162,74,0.05), transparent); }
+  header h1 { font-family: var(--font-head); font-weight: 700; letter-spacing: 0.06em; font-size: clamp(24px, 5vw, 34px); margin: 0 0 4px; color: var(--gold-bright); text-shadow: 0 0 20px rgba(201,162,74,0.25); }
+  header .sub { color: var(--text-dim); font-style: italic; font-size: 15px; }
+  .divider { width: 120px; height: 1px; margin: 10px auto 0; background: linear-gradient(90deg, transparent, var(--gold-dim), transparent); }
+  .toolbar { max-width: 900px; margin: 18px auto 0; padding: 0 16px; display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+  input[type="text"], input[type="password"], select, textarea, input[type="number"] {
+    background: var(--bg-panel); border: 1px solid var(--border-light); color: var(--text);
+    font-family: var(--font-body); font-size: 16px; padding: 9px 12px; border-radius: 4px; outline: none;
+  }
+  input:focus, select:focus, textarea:focus { border-color: var(--gold); }
+  #searchInput { flex: 1; min-width: 160px; }
+  #categoryFilter { min-width: 150px; }
+  button {
+    font-family: var(--font-head); background: transparent; border: 1px solid var(--gold-dim);
+    color: var(--gold-bright); padding: 9px 16px; border-radius: 4px; cursor: pointer;
+    font-size: 13px; letter-spacing: 0.04em; transition: background 0.15s, color 0.15s; white-space: nowrap;
+  }
+  button:hover { background: rgba(201,162,74,0.12); }
+  button.primary { background: var(--gold-dim); color: #14100b; border-color: var(--gold-dim); font-weight: 600; }
+  button.primary:hover { background: var(--gold); }
+  button.danger { border-color: var(--red-bright); color: var(--red-bright); }
+  button.danger:hover { background: rgba(165,50,47,0.15); }
+  button.ghost { border-color: transparent; color: var(--text-dim); padding: 6px 10px; }
+  button.ghost:hover { color: var(--gold-bright); background: rgba(201,162,74,0.08); }
+  button:disabled { opacity: 0.5; cursor: not-allowed; }
+  main { max-width: 900px; margin: 20px auto 60px; padding: 0 16px; }
+  .category-group { margin-bottom: 28px; }
+  .category-title { font-family: var(--font-head); font-size: 15px; letter-spacing: 0.08em; color: var(--gold); text-transform: uppercase; border-bottom: 1px solid var(--border); padding-bottom: 6px; margin-bottom: 12px; display: flex; justify-content: space-between; align-items: baseline; }
+  .category-count { color: var(--text-faint); font-size: 12px; letter-spacing: 0; text-transform: none; font-family: var(--font-body); font-style: italic; }
+  .card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 6px; padding: 14px 16px; margin-bottom: 10px; cursor: pointer; transition: background 0.15s, border-color 0.15s; }
+  .card:hover { background: var(--bg-card-hover); border-color: var(--border-light); }
+  .card-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; }
+  .card-name { font-family: var(--font-head); font-size: 18px; color: var(--text); }
+  .status-pill { font-size: 11px; padding: 2px 8px; border-radius: 10px; white-space: nowrap; letter-spacing: 0.03em; border: 1px solid; }
+  .status-finalized { color: #7fc97f; border-color: #3d5c3d; background: rgba(127,201,127,0.08); }
+  .status-named { color: var(--gold-bright); border-color: var(--gold-dim); background: rgba(201,162,74,0.08); }
+  .status-draft { color: var(--text-dim); border-color: var(--border-light); background: rgba(255,255,255,0.03); }
+  .status-placeholder { color: var(--text-faint); border-color: var(--border); background: transparent; font-style: italic; }
+  .card-spirit { color: var(--text-dim); font-size: 14px; font-style: italic; margin-top: 2px; }
+  .card-rating { margin-top: 6px; font-size: 14px; color: var(--gold); }
+  .empty-state { text-align: center; color: var(--text-faint); font-style: italic; padding: 40px 20px; }
+  .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.65); display: flex; align-items: flex-start; justify-content: center; padding: 30px 14px; overflow-y: auto; z-index: 100; }
+  .modal { background: var(--bg-panel); border: 1px solid var(--border-light); border-radius: 8px; max-width: 640px; width: 100%; padding: 26px 24px 24px; box-shadow: 0 20px 60px rgba(0,0,0,0.5); }
+  .modal h2 { font-family: var(--font-head); color: var(--gold-bright); margin: 0 0 4px; font-size: 22px; }
+  .modal-close-row { display: flex; justify-content: flex-end; margin-bottom: -10px; }
+  .field { margin-bottom: 14px; }
+  .field label { display: block; font-size: 12px; letter-spacing: 0.05em; color: var(--text-dim); text-transform: uppercase; margin-bottom: 5px; }
+  .field input, .field select, .field textarea { width: 100%; }
+  .field textarea { resize: vertical; font-size: 16px; }
+  .field .hint { font-size: 12px; color: var(--text-faint); margin-top: 4px; font-style: italic; }
+  .ingredient-row { display: flex; gap: 6px; margin-bottom: 6px; }
+  .ingredient-row input { flex: 1; }
+  #ingredientsList { margin-bottom: 6px; }
+  .modal-actions { display: flex; justify-content: space-between; gap: 10px; margin-top: 18px; padding-top: 14px; border-top: 1px solid var(--border); }
+  .modal-actions .left { display: flex; gap: 8px; }
+  .detail-section { margin-bottom: 16px; }
+  .detail-label { font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-dim); margin-bottom: 4px; }
+  .detail-value { color: var(--text); white-space: pre-wrap; }
+  .detail-ingredients { list-style: none; padding: 0; margin: 0; }
+  .detail-ingredients li { padding: 3px 0; border-bottom: 1px dotted var(--border); }
+  .detail-ingredients li:last-child { border-bottom: none; }
+  .tasting-entry { border-left: 2px solid var(--gold-dim); padding: 6px 0 6px 12px; margin-bottom: 8px; }
+  .tasting-entry .meta { font-size: 12px; color: var(--text-faint); }
+  .star-row { display: flex; gap: 4px; font-size: 22px; margin-bottom: 8px; cursor: pointer; user-select: none; }
+  .star { color: var(--border-light); }
+  .star.filled { color: var(--gold); }
+  .loading-msg { text-align: center; color: var(--text-faint); padding: 50px; font-style: italic; }
+  .status-bar { text-align: center; font-size: 12px; padding: 10px 16px 0; font-style: italic; color: var(--text-faint); }
+  .status-bar.error { color: var(--red-bright); }
+  .status-bar.ok { color: var(--gold); }
+  .error-box { background: rgba(165,50,47,0.1); border: 1px solid var(--red-bright); color: var(--red-bright); padding: 10px 14px; border-radius: 4px; margin-bottom: 14px; font-size: 14px; }
+  @media (max-width: 480px) { .modal { padding: 20px 16px; } }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>The Ledger</h1>
+  <div class="sub">a private accounting of spirits, syrups &amp; secrets</div>
+  <div class="divider"></div>
+</header>
+
+<div class="toolbar">
+  <input type="text" id="searchInput" placeholder="Search by name or ingredient…">
+  <select id="categoryFilter"><option value="">All Categories</option></select>
+  <select id="statusFilter">
+    <option value="">All Statuses</option>
+    <option value="finalized">Finalized</option>
+    <option value="named">Named</option>
+    <option value="draft">Draft</option>
+    <option value="placeholder">Placeholder</option>
+  </select>
+  <button class="primary" id="addBtn">+ Add Cocktail</button>
+  <button id="syncBtn">↻ Refresh</button>
+  <button id="settingsBtn">⚙ GitHub Settings</button>
+</div>
+<div class="status-bar" id="statusBar"></div>
+
+<main id="main">
+  <div class="loading-msg">Uncorking the ledger…</div>
+</main>
+
+<div id="modalRoot"></div>
+
+<script>
+(function() {
+  "use strict";
+
+  var SETTINGS_KEY = "speakeasy_ledger_github_settings_v1";
+  var LOCAL_CACHE_KEY = "speakeasy_ledger_local_cache_v1";
+
+  var CATEGORIES = [
+    "Old Fashioned Variations", "Bourbon & Rye Signatures", "Gin", "Rum",
+    "Tequila/Mezcal", "Vodka", "Aperitif/Lowball", "Tiki Cocktails"
+  ];
+  var STATUS_OPTIONS = [
+    { value: "finalized", label: "Finalized" },
+    { value: "named", label: "Named" },
+    { value: "draft", label: "Draft" },
+    { value: "placeholder", label: "Placeholder" }
+  ];
+
+  var SEED_DATA = [
+    { id: "green-flash", category: "Old Fashioned Variations", status: "finalized", name: "Green Flash", spirit: "Bourbon (high-proof, e.g. Elijah Craig, Wild Turkey 101)", ingredients: ["2 oz bourbon (high-proof)","¼ oz green Chartreuse","2 dashes Angostura bitters","1 dash orange bitters (optional)","Orange peel (flamed)"], method: "Stir all with ice 25-30 sec, strain over large cube. Flame the orange peel: hold skin-side out toward the drink, pass a lit match between peel and glass, then sharply squeeze the peel to spray the oils through the flame. Drop the peel in.", notes: "Chartreuse replaces the sugar — no simple syrup needed. Start at ¼ oz, don't overdo it (110 proof). The flamed peel is the drink's namesake moment.", nameStory: "Named for the green flash: an optical phenomenon sometimes seen at sea right at sunset over the ocean.", source: "", tastingEntries: [] },
+    { id: "spirit-room", category: "Old Fashioned Variations", status: "named", name: "Spirit Room", spirit: "Bourbon (Woodford Reserve Double Oaked recommended)", ingredients: ["2 oz bourbon","½ oz Magic Syrup (brown sugar, toasted coconut, butterscotch extract, vanilla extract)","2 dashes black walnut bitters","2 dashes chocolate bitters","Graham cracker rim or toasted marshmallow garnish"], method: "Rim rocks glass with honey + crushed graham crackers. Stir bourbon, syrup, bitters with ice 30 sec. Strain over one large ice sphere into prepared glass.", notes: "V2 improves on the original — single homemade Magic Syrup replaces separate coconut/butterscotch syrups.", nameStory: "A ship's \"spirit room\" was the actual compartment where liquor stores were kept — kept as final name, no rename needed.", source: "", tastingEntries: [] },
+    { id: "marcys-windfall", category: "Old Fashioned Variations", status: "finalized", name: "Marcy's Windfall", spirit: "Bourbon (higher proof, 100+)", ingredients: ["2 oz bourbon (high proof)","½ oz banana liqueur","¼ oz Demerara syrup","2 dashes black walnut bitters","1 dash chocolate bitters","Nutmeg + banana chip garnish"], method: "Stir liquids with ice until well chilled, pour over one large cube in rocks glass, garnish with nutmeg + banana chip.", notes: "Use higher-proof bourbon (100+) or it can get too sweet.", nameStory: "Named for the user's sister-in-law Marcy, who this drink converted into an Old Fashioned fan. \"Windfall\" = an unexpected favorable wind / unexpected good fortune.", source: "", tastingEntries: [] },
+    { id: "full-fathom-five", category: "Old Fashioned Variations", status: "finalized", name: "Full Fathom Five", spirit: "Split base — Knob Creek Smoked Maple bourbon + regular bourbon", ingredients: ["1 oz Knob Creek Smoked Maple bourbon","1 oz regular bourbon","¼ oz walnut liqueur (Nocino)","¼ oz maple syrup","2 dashes Angostura bitters","Orange peel"], method: "Stir all with ice, strain over one large cube, express orange peel over the drink.", notes: "Alt fat-wash version: 2 oz bourbon, ¼ oz maple syrup, 4 dashes Fee Brothers Browned Butter fat wash, lemon peel garnish — simpler build, worth taste-testing both.", nameStory: "From Shakespeare's The Tempest — \"something rich and strange.\"", source: "", tastingEntries: [] },
+    { id: "stepes-even-keel", category: "Old Fashioned Variations", status: "named", name: "Stepe's Even Keel", spirit: "Bourbon", ingredients: ["Classic Old Fashioned ratios TBD"], method: "", notes: "Classic Old Fashioned with adjusted ratios for Stepe (Croatian, drink is a favorite of the ladies).", nameStory: "\"Even keel\" = balanced and steady, fitting since it's the classic ratio rebalanced.", source: "", tastingEntries: [] },
+    { id: "roasted-duck-fat-boulevardier", category: "Bourbon & Rye Signatures", status: "draft", name: "Roasted Duck Fat Boulevardier", spirit: "Bourbon or rye", ingredients: ["2 oz bourbon or rye","1 oz Campari","1 oz sweet vermouth","5 dashes Fee Brothers Roasted Duck fat wash","Orange peel"], method: "Stir all with ice, strain, garnish with orange peel.", notes: "Reintroduces the Boulevardier concept after the plain classic was removed — fat wash makes it different enough to warrant its own entry. Needs a nautical name.", nameStory: "", source: "Personal recipe (Fee Brothers Fat Wash Drops)", tastingEntries: [] },
+    { id: "bacon-vieux-carre", category: "Bourbon & Rye Signatures", status: "draft", name: "Bacon Vieux Carré", spirit: "Rye + cognac split base", ingredients: ["¾ oz rye","¾ oz sweet vermouth","¾ oz cognac (or ~1 oz B&B liqueur as a simplified substitute)","2 tsp Bénédictine (omit if using B&B)","4 dashes bitters (Peychaud's and/or Angostura)","4 dashes Fee Brothers Bacon fat wash","Lemon twist"], method: "Stir all with ice, strain, garnish with lemon twist.", notes: "Riff on the classic New Orleans Vieux Carré with a bacon fat wash added for smoky depth. Needs a nautical name.", nameStory: "", source: "Personal recipe (Fee Brothers Fat Wash Drops)", tastingEntries: [] },
+    { id: "capn-wheel", category: "Bourbon & Rye Signatures", status: "draft", name: "The Cap'n's Wheel (placeholder name)", spirit: "Cap'n Crunch-infused bourbon/rye blend", ingredients: ["2 oz Cap'n Crunch-infused whiskey blend (3 cups Old Grand-Dad bonded bourbon + 1 cup Rittenhouse rye, infused 24 hrs with 2 cups Cap'n Crunch, then strained)","½ oz Lazzaroni amaretto","4 dashes Angostura bitters","4 dashes Bittermens Xocolatl mole bitters","Absinthe rinse","Piece of Cap'n Crunch cereal for garnish"], method: "Stir all (except absinthe) with ice, strain into absinthe-rinsed rocks glass, garnish.", notes: "User wants to call this \"Cap'n Crunch\" on their own personal menu; kept as a neutral placeholder name in this tracker since it's a trademarked character. Riff on The Godfather, created by Patrick Jennings at Andra Hem, Philadelphia.", nameStory: "", source: "Whisky Advocate", tastingEntries: [] },
+    { id: "the-loggerhead", category: "Bourbon & Rye Signatures", status: "finalized", name: "The Loggerhead", spirit: "Bourbon (wheated, e.g. Maker's Mark)", ingredients: ["2 oz bourbon","¾ oz Magic Syrup (same as Spirit Room)","½ oz coconut cream (thick, canned)","1 whole egg","Grated dark chocolate + pinch sea salt garnish"], method: "Dry shake all (no ice) 20 sec to emulsify egg/coconut cream. Add ice, shake again 15 sec. Double strain into chilled coupe. Top with chocolate + salt.", notes: "Simplified from the original (crème de cacao + butterscotch schnapps) to reuse the Spirit Room's Magic Syrup. Flagged as very similar to Spirit Room — keeping both for now to compare after tasting.", nameStory: "A \"loggerhead\" was the red-hot iron rod historically plunged into flip drinks to warm and froth them — genuine flip-cocktail history.", source: "", tastingEntries: [] },
+    { id: "kentucky-islander", category: "Bourbon & Rye Signatures", status: "named", name: "Kentucky Islander", spirit: "Bourbon", ingredients: ["2 oz bourbon","1 oz coconut syrup","¾ oz lime juice","2 dashes Angostura bitters","Coconut flakes (optional garnish)"], method: "Shake all with ice until chilled, strain into ice-filled chilled glass, garnish.", notes: "Shaken/tiki-leaning rather than stirred — different profile than the rest of this category. Already has a nautical-flavored name.", nameStory: "", source: "", tastingEntries: [] },
+    { id: "smoke-and-brine-manhattan", category: "Bourbon & Rye Signatures", status: "finalized", name: "Smoke & Brine Manhattan", spirit: "Rye whiskey", ingredients: ["2 oz rye whiskey","1 oz sweet vermouth (Carpano Antica or Cocchi di Torino)","2 dashes Angostura bitters","2-3 drops saline solution (10:1 water:salt)","Luxardo cherry garnish"], method: "Stir rye, vermouth, bitters, and saline with ice 30 sec. Strain into rocks glass or coupe. Place under smoke dome (applewood/cherry wood) 15-30 sec, lift with flourish, garnish, serve.", notes: "Variations to try: swap saline for a light fino sherry rinse (short shelf life — buy small format); or add a barspoon rinse of peated Islay Scotch for smoke baked into the liquid itself.", nameStory: "States the drink's smoke dome + saline elements directly. Manhattan itself is reached by water.", source: "", tastingEntries: [] },
+    { id: "squall-line", category: "Bourbon & Rye Signatures", status: "finalized", name: "Squall Line", spirit: "Rye (split base with Jamaican rum)", ingredients: ["¾ oz Rittenhouse bottled-in-bond rye (or other 100-proof rye)","¾ oz Jamaican rum","¾ oz Campari","½ oz fresh lime juice","½ oz demerara syrup","2 oz pineapple juice","Pineapple wedge garnish"], method: "Shake all ingredients with cubed ice 5-8 sec. Strain over fresh ice in a double old-fashioned glass. Garnish with pineapple wedge.", notes: "A rye-forward riff on the classic Jungle Bird.", nameStory: "A fast-moving storm front — keeps the punchy \"Thunder\" energy of the original name (formerly Thunder Bird), fully nautical.", source: "Whisky Advocate (Aug 2026)", tastingEntries: [] },
+    { id: "the-dead-reckoning", category: "Bourbon & Rye Signatures", status: "finalized", name: "The Dead Reckoning", spirit: "Bourbon (Rabbit Hole Cavehill specified)", ingredients: ["2 oz bourbon","1 oz House Amaro Mix (equal parts Amaro Montenegro + Averna or Ramazzotti)","1 oz lemon simple syrup","¾ oz Aperol","¼ oz Fernet-Branca","Fresh lemon twist"], method: "Combine all in a shaker with ice, shake vigorously 12-15 sec, fine-strain into chilled coupe, garnish.", notes: "Riff on the classic Paper Plane — swaps a house amaro blend for Amaro Nonino, adds Fernet-Branca for extra bitterness.", nameStory: "Dead reckoning: navigating by estimated calculation rather than fixed landmarks — fitting since this riff estimates the classic's amaro component with a substitute blend.", source: "Personal email (Scott Davis)", tastingEntries: [] },
+    { id: "the-undertow", category: "Bourbon & Rye Signatures", status: "finalized", name: "The Undertow", spirit: "Bourbon (Wild Turkey specified)", ingredients: ["1.5 oz bourbon","1 oz grapefruit juice","0.5 oz lemon juice","¾ oz honey-pineapple syrup","Lemon wheel garnish"], method: "Add all ingredients to a cocktail shaker with ice, shake, strain into ice-filled highball glass. Garnish with lemon wheel.", notes: "Single-serving conversion from a batch recipe (serves 4: 6 oz bourbon, 4 oz grapefruit juice, 2 oz lemon juice, 3 oz honey-pineapple syrup).", nameStory: "Undertow: a hidden, powerful current beneath the surface — echoes the \"unexpected strength\" idiom of the original name, Dark Horse.", source: "Magazine feature (image upload)", tastingEntries: [] },
+    { id: "the-sirens-call", category: "Bourbon & Rye Signatures", status: "finalized", name: "The Siren's Call", spirit: "Split base — rye whiskey + dark rum (50% ABV)", ingredients: ["1 oz rye whiskey","1 oz dark rum (50% ABV)","1 oz Aperol","¾ oz sweet vermouth (Punt e Mes)","Optional 2 dashes orange bitters"], method: "Stir all ingredients with fresh ice for a full 30 seconds. Strain over one large ice cube into a Double Old Fashioned glass.", notes: "Split-base riff on the Boulevardier — dark rum replaces half the whiskey, Aperol replaces Campari for brighter, less medicinal bitterness. Garnish: \"Siren's Sail\" — wide orange peel cut into a sail shape, pierced with a black bamboo pick.", nameStory: "Mythological sea sirens, luring with sweetness then holding captive with bitterness.", source: "Personal recipe development", tastingEntries: [] },
+    { id: "ladybirds-landfall", category: "Gin", status: "finalized", name: "Ladybird's Landfall", spirit: "London Dry-style gin", ingredients: ["2 oz gin","¾ oz hibiscus syrup","½ oz fresh lemon juice","3-4 fresh raspberries (muddled) or ½ oz raspberry liqueur","2-3 fresh blackberries for garnish","Soda water to top (optional)"], method: "Muddle raspberries in a shaker if using fresh. Add gin, hibiscus syrup, and lemon juice with ice. Shake well, double strain into a chilled coupe or over ice in a rocks glass. Top with soda if using. Garnish with blackberries on a pick.", notes: "Combines hibiscus (deep red, tart) with raspberry/blackberry (fruit character, dark \"spot\" garnish) — visually a deep magenta/ruby red.", nameStory: "Named for the user's daughter McKenna (\"BooBoo\"), ladybug theme. Ladybirds are documented to swarm across open water during migration (the 1976 UK ladybird invasion) — \"landfall\" nods to that journey's end.", source: "", tastingEntries: [] },
+    { id: "bow-wave-sea-spray", category: "Gin", status: "named", name: "Bow Wave / Sea Spray", spirit: "London Dry-style gin", ingredients: ["2 oz gin","1 oz lemon juice","1½ oz tangerine or clementine juice","¾ oz carrot-turmeric syrup","¾ oz aquafaba (or ½ oz egg whites — pasteurized liquid preferred; or Fee Foam methylcellulose foamer, 1-3 dashes/~0.3mL per drink)","2-3 dashes orange bitters","1 oz soda water","Edible flower or citrus peel garnish"], method: "Combine all ingredients except soda water in a shaker. Dry shake (no ice) to emulsify. Add ice, shake again to chill. Strain into Collins glass over fresh ice. Top with soda. Garnish.", notes: "Two name options to compare after tasting — Bow Wave (as-is, no salt) or Sea Spray (same recipe + a pinch of salt added).", nameStory: "Bow Wave = the curling, foamy wave a ship pushes ahead of its bow, matching the foam cap. Sea Spray = fine mist off breaking waves.", source: "Wine Enthusiast, June/July 2026", tastingEntries: [] },
+    { id: "dragonfly-tbd", category: "Rum", status: "placeholder", name: "Dragonfly-themed cocktail", spirit: "Rum", ingredients: ["Recipe TBD"], method: "", notes: "Dragonfly theme to develop.", nameStory: "", source: "", tastingEntries: [] },
+    { id: "land-ho", category: "Tequila/Mezcal", status: "finalized", name: "Land Ho!", spirit: "Blanco tequila", ingredients: ["1.35 oz blanco tequila","1.35 oz Campari","1 oz passion fruit syrup","1 oz lemon juice","2 oz grapefruit soda (Squirt recommended)","Orange twist garnish"], method: "Shake tequila, Campari, passion fruit syrup, and lemon juice with ice until well chilled. Strain into a highball glass filled with ice cubes. Top with grapefruit soda, garnish.", notes: "A Paloma riff created by Ryan Ota (Paper Plane, San Jose). Don't over-shake — leave room to top with soda.", nameStory: "The classic sailor's cry upon first sighting land; ties to the historical tradition of doves/pigeons signaling land was near, echoing \"Colomba\"/dove and its Paloma namesake.", source: "Decanter, July 2026", tastingEntries: [] },
+    { id: "midwatch-sour", category: "Tequila/Mezcal", status: "finalized", name: "Midwatch Sour", spirit: "Mezcal + amaro", ingredients: ["1.5 oz mezcal","1 oz Meletti amaro","1 tbsp orgeat","1 tbsp Campari (or other red bitter aperitivo)","1½ tbsp fresh lemon juice","2 dashes orange bitters","3 drops 10:1 saline (optional)","Cocktail cherries for garnish"], method: "Add all ingredients to a shaker with ice, shake. Strain into a rocks glass over fresh ice, garnish with cocktail cherry (or two).", notes: "Created by Pete St. Pete, Beverage Director at Capri Club.", nameStory: "Midwatch: the real naval term for the overnight watch, midnight to 4am — fits a late-night pour.", source: "Magazine feature (image upload)", tastingEntries: [] },
+    { id: "sozzled-sandpiper", category: "Vodka", status: "finalized", name: "The Sozzled Sandpiper", spirit: "Vodka (Vesper-style martini riff)", ingredients: ["1.5 oz Tito's Handmade Vodka","1 tsp Lillet Blanc","0.5 oz pickled ginger brine","Pinch of salt","Lemon peel (for oils only, discarded)","Mini origami crane garnish (optional)"], method: "Combine all ingredients in a mixing glass, add ice, stir ~20 sec. Strain into Nick & Nora glass. Atomize a lemon peel above the drink so oils coat the rim, then discard peel. Garnish.", notes: "Created by Cello Ritondo, lead bartender at Next Door by Wegmans (NYC). Inspired by the traditional Vesper + Japanese cuisine. Pairs well with sashimi/maki.", nameStory: "Coastal bird theme (sandpiper) + \"sozzled\" (drunk slang), matching the boozy Vesper-style profile.", source: "Magazine feature (image upload)", tastingEntries: [] },
+    { id: "ahoy-molly", category: "Aperitif/Lowball", status: "finalized", name: "Ahoy Molly", spirit: "None (vermouth + absinthe forward, low-ABV)", ingredients: ["3 oz Dolin Blanc vermouth","½ oz absinthe","½ oz orgeat","3-4 oz chilled soda water","Fresh mint garnish"], method: "Add vermouth, absinthe, and orgeat to a highball glass, stir to combine. Fill glass with ice, top with soda water. Garnish with mint sprig.", notes: "Created by Sother Teague, beverage director at Amor y Amargo (NYC). Dolin Blanc has 32 botanicals including hibiscus, basil, and cinnamon.", nameStory: "Nautical greeting, named for the user's niece Molly.", source: "Magazine feature (image upload)", tastingEntries: [] },
+    { id: "mad-captain", category: "Tiki Cocktails", status: "finalized", name: "Mad Captain", spirit: "Dark rum", ingredients: ["2 oz dark rum","½ oz fresh lime juice","½ oz coconut cream","Coconut water (to top)","Optional ½ oz simple syrup","Lime wedge or coconut flakes garnish"], method: "Shake rum, lime juice, coconut cream (+ simple syrup if using) vigorously with ice. Double strain into chilled glass. Top with coconut water to taste.", notes: "Chill glass first (coupe or rocks both work).", nameStory: "Nautical.", source: "", tastingEntries: [] },
+    { id: "navy-grog", category: "Tiki Cocktails", status: "finalized", name: "Navy Grog", spirit: "Rum trinity", ingredients: ["1 oz gold Demerara rum","1 oz dark Jamaican rum (Jonah's Curse)","1 oz white rum","¾ oz fresh lime juice","¾ oz white grapefruit juice","1 oz honey mix","¾ oz club soda","Optional 2 dashes Angostura bitters"], method: "Chill a double old-fashioned glass or tiki mug. Combine rums, lime juice, grapefruit juice, and honey mix (+ bitters if using) in a shaker with ice; shake ~20 sec. Fill glass with fresh crushed ice, pour drink in, top with club soda, stir gently.", notes: "Family taste-tested: Cath 10/10, Peter 9/10, Laurie 8.7/10. Based on Don the Beachcomber's classic Navy Grog. Garnish: lime wheel/twist, mint sprig, or spent lime shell.", nameStory: "Classic tiki drink, already nautical.", source: "", tastingEntries: [] },
+    { id: "powder-monkey", category: "Tiki Cocktails", status: "named", name: "Powder Monkey (Big Poppa's Return)", spirit: "Rhum agricole + banana liqueur", ingredients: ["2 oz rhum agricole (blanc or vieux)","0.75 oz banana liqueur","1 oz coconut cream","1 oz pineapple juice","0.75 oz fresh lime juice","Pineapple wedge or banana chip garnish"], method: "Shake all hard with ice, strain into tiki mug or rocks glass over crushed ice, garnish.", notes: "Modeled on the version at CANE TiKi Room, Paso Robles ($16 on their menu). Exact proportions aren't published — this is a best-estimate clone to taste-test and adjust.", nameStory: "\"Powder monkey\" = historic term for the young sailors who carried gunpowder to a ship's cannons. Nods to Peter's nickname \"Big Poppa.\"", source: "Personal menu photo + reconstructed recipe", tastingEntries: [] }
+  ];
+
+  var cocktails = [];
+  var currentFilter = { search: "", category: "", status: "" };
+  var settings = null; // { owner, repo, path, token }
+  var currentSha = null; // sha of the file on GitHub, needed for updates
+  var isSyncing = false;
+
+  var mainEl = document.getElementById("main");
+  var modalRoot = document.getElementById("modalRoot");
+  var searchInput = document.getElementById("searchInput");
+  var categoryFilter = document.getElementById("categoryFilter");
+  var statusFilter = document.getElementById("statusFilter");
+  var addBtn = document.getElementById("addBtn");
+  var syncBtn = document.getElementById("syncBtn");
+  var settingsBtn = document.getElementById("settingsBtn");
+  var statusBar = document.getElementById("statusBar");
+
+  CATEGORIES.forEach(function(c) {
+    var opt = document.createElement("option");
+    opt.value = c; opt.textContent = c;
+    categoryFilter.appendChild(opt);
+  });
+
+  function escapeHtml(s) {
+    if (s === null || s === undefined) return "";
+    return String(s).replace(/[&<>"']/g, function(c) {
+      return ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c];
+    });
+  }
+  function slugify(name) {
+    var base = String(name || "untitled").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
+    return (base || "cocktail") + "-" + Math.random().toString(36).slice(2, 7);
+  }
+  function statusLabel(s) {
+    var found = STATUS_OPTIONS.filter(function(o){ return o.value === s; })[0];
+    return found ? found.label : "Draft";
+  }
+  function avgRating(entries) {
+    if (!entries || !entries.length) return null;
+    var withRating = entries.filter(function(e){ return typeof e.rating === "number" && e.rating > 0; });
+    if (!withRating.length) return null;
+    var sum = withRating.reduce(function(a,e){ return a + e.rating; }, 0);
+    return sum / withRating.length;
+  }
+  function starsHtml(rating) {
+    var full = Math.round(rating || 0);
+    var out = "";
+    for (var i = 1; i <= 5; i++) out += (i <= full) ? "★" : "☆";
+    return out;
+  }
+  function utf8ToBase64(str) {
+    return btoa(unescape(encodeURIComponent(str)));
+  }
+  function base64ToUtf8(b64) {
+    return decodeURIComponent(escape(atob(b64.replace(/\n/g, ""))));
+  }
+  function setStatus(msg, cls) {
+    statusBar.textContent = msg || "";
+    statusBar.className = "status-bar" + (cls ? " " + cls : "");
+  }
+
+  // ---------- Settings ----------
+
+  function loadSettings() {
+    try {
+      var raw = window.localStorage.getItem(SETTINGS_KEY);
+      if (raw) return JSON.parse(raw);
+    } catch (e) { console.error("settings load failed", e); }
+    return null;
+  }
+  function saveSettings(s) {
+    try {
+      window.localStorage.setItem(SETTINGS_KEY, JSON.stringify(s));
+      return true;
+    } catch (e) { console.error("settings save failed", e); return false; }
+  }
+  function loadLocalCache() {
+    try {
+      var raw = window.localStorage.getItem(LOCAL_CACHE_KEY);
+      if (raw) { var p = JSON.parse(raw); if (p && Array.isArray(p.cocktails)) return p; }
+    } catch (e) {}
+    return null;
+  }
+  function saveLocalCache(sha) {
+    try {
+      window.localStorage.setItem(LOCAL_CACHE_KEY, JSON.stringify({ cocktails: cocktails, sha: sha || currentSha }));
+    } catch (e) { console.error("local cache save failed", e); }
+  }
+
+  function githubUrl() {
+    return "https://api.github.com/repos/" + encodeURIComponent(settings.owner) + "/" + encodeURIComponent(settings.repo) + "/contents/" + settings.path.split("/").map(encodeURIComponent).join("/");
+  }
+  function githubHeaders() {
+    return {
+      "Authorization": "token " + settings.token,
+      "Accept": "application/vnd.github+json"
+    };
+  }
+
+  // ---------- GitHub sync ----------
+
+  function fetchFromGitHub() {
+    if (!settings) return Promise.resolve(false);
+    setStatus("Syncing with GitHub…");
+    isSyncing = true;
+    return fetch(githubUrl(), { headers: githubHeaders() }).then(function(resp) {
+      if (resp.status === 404) {
+        // File doesn't exist yet — create it with seed data
+        return createInitialFile();
+      }
+      if (!resp.ok) {
+        return resp.json().catch(function(){ return {}; }).then(function(body) {
+          throw new Error("GitHub error " + resp.status + (body && body.message ? ": " + body.message : ""));
+        });
+      }
+      return resp.json().then(function(body) {
+        currentSha = body.sha;
+        var decoded = base64ToUtf8(body.content);
+        var parsed = JSON.parse(decoded);
+        if (!Array.isArray(parsed)) throw new Error("Data file didn't contain a valid list");
+        cocktails = parsed;
+        saveLocalCache(currentSha);
+        setStatus("Synced with GitHub just now.", "ok");
+        return true;
+      });
+    }).catch(function(err) {
+      console.error("fetch from GitHub failed", err);
+      var cached = loadLocalCache();
+      if (cached) {
+        cocktails = cached.cocktails;
+        currentSha = cached.sha;
+        setStatus("Couldn't reach GitHub (" + err.message + ") — showing last saved copy from this device.", "error");
+      } else {
+        setStatus("Couldn't reach GitHub (" + err.message + ") and no local copy exists yet.", "error");
+        cocktails = [];
+      }
+      return false;
+    }).finally(function() {
+      isSyncing = false;
+      render();
+    });
+  }
+
+  function createInitialFile() {
+    setStatus("First time setup — creating your data file on GitHub…");
+    var content = utf8ToBase64(JSON.stringify(SEED_DATA, null, 2));
+    return fetch(githubUrl(), {
+      method: "PUT",
+      headers: Object.assign({ "Content-Type": "application/json" }, githubHeaders()),
+      body: JSON.stringify({ message: "Initialize cocktail ledger", content: content })
+    }).then(function(resp) {
+      if (!resp.ok) {
+        return resp.json().catch(function(){ return {}; }).then(function(body) {
+          throw new Error("Couldn't create file: " + resp.status + (body && body.message ? " " + body.message : ""));
+        });
+      }
+      return resp.json();
+    }).then(function(body) {
+      currentSha = body.content.sha;
+      cocktails = SEED_DATA.slice();
+      saveLocalCache(currentSha);
+      setStatus("Created your data file on GitHub with starting recipes.", "ok");
+      return true;
+    });
+  }
+
+  function pushToGitHub(retrying) {
+    if (!settings) {
+      setStatus("Not connected to GitHub — changes are only saved on this device.", "error");
+      saveLocalCache(null);
+      return Promise.resolve(false);
+    }
+    setStatus("Saving to GitHub…");
+    var content = utf8ToBase64(JSON.stringify(cocktails, null, 2));
+    var payload = { message: "Update cocktail ledger", content: content };
+    if (currentSha) payload.sha = currentSha;
+    return fetch(githubUrl(), {
+      method: "PUT",
+      headers: Object.assign({ "Content-Type": "application/json" }, githubHeaders()),
+      body: JSON.stringify(payload)
+    }).then(function(resp) {
+      if (resp.status === 409 && !retrying) {
+        // sha conflict — someone else wrote in between. Refetch sha and retry once.
+        return fetch(githubUrl(), { headers: githubHeaders() }).then(function(r2) {
+          return r2.json();
+        }).then(function(body2) {
+          currentSha = body2.sha;
+          return pushToGitHub(true);
+        });
+      }
+      if (!resp.ok) {
+        return resp.json().catch(function(){ return {}; }).then(function(body) {
+          throw new Error("GitHub error " + resp.status + (body && body.message ? ": " + body.message : ""));
+        });
+      }
+      return resp.json().then(function(body) {
+        currentSha = body.content.sha;
+        saveLocalCache(currentSha);
+        setStatus("Saved to GitHub.", "ok");
+        return true;
+      });
+    }).catch(function(err) {
+      console.error("push to GitHub failed", err);
+      saveLocalCache(currentSha);
+      setStatus("Couldn't save to GitHub (" + err.message + ") — kept on this device only for now. Try Refresh later.", "error");
+      return false;
+    });
+  }
+
+  // ---------- Rendering ----------
+
+  function render() {
+    if (isSyncing) {
+      mainEl.innerHTML = '<div class="loading-msg">Uncorking the ledger…</div>';
+      return;
+    }
+    var filtered = cocktails.filter(function(c) {
+      if (currentFilter.category && c.category !== currentFilter.category) return false;
+      if (currentFilter.status && c.status !== currentFilter.status) return false;
+      if (currentFilter.search) {
+        var q = currentFilter.search.toLowerCase();
+        var hay = [c.name || "", (c.ingredients || []).join(" "), c.spirit || "", c.notes || ""].join(" ").toLowerCase();
+        if (hay.indexOf(q) === -1) return false;
+      }
+      return true;
+    });
+
+    if (!cocktails.length) {
+      mainEl.innerHTML = '<div class="empty-state">No cocktails yet. Add your first one to start the ledger.</div>';
+      return;
+    }
+    if (!filtered.length) {
+      mainEl.innerHTML = '<div class="empty-state">Nothing matches — try a different search or filter.</div>';
+      return;
+    }
+
+    var byCategory = {};
+    filtered.forEach(function(c) {
+      var cat = c.category || "Uncategorized";
+      if (!byCategory[cat]) byCategory[cat] = [];
+      byCategory[cat].push(c);
+    });
+    var order = CATEGORIES.concat(Object.keys(byCategory).filter(function(c){ return CATEGORIES.indexOf(c) === -1; }));
+
+    var html = "";
+    order.forEach(function(cat) {
+      var items = byCategory[cat];
+      if (!items || !items.length) return;
+      html += '<div class="category-group">';
+      html += '<div class="category-title"><span>' + escapeHtml(cat) + '</span><span class="category-count">' + items.length + '</span></div>';
+      items.forEach(function(c) {
+        var rating = avgRating(c.tastingEntries);
+        html += '<div class="card" data-id="' + escapeHtml(c.id) + '">';
+        html += '<div class="card-top">';
+        html += '<div class="card-name">' + escapeHtml(c.name || "Untitled") + '</div>';
+        html += '<div class="status-pill status-' + escapeHtml(c.status || "draft") + '">' + escapeHtml(statusLabel(c.status)) + '</div>';
+        html += '</div>';
+        if (c.spirit) html += '<div class="card-spirit">' + escapeHtml(c.spirit) + '</div>';
+        if (rating !== null) html += '<div class="card-rating">' + starsHtml(rating) + ' <span style="color:var(--text-faint);font-size:12px;">(' + rating.toFixed(1) + ')</span></div>';
+        html += '</div>';
+      });
+      html += '</div>';
+    });
+    mainEl.innerHTML = html;
+
+    Array.prototype.forEach.call(mainEl.querySelectorAll(".card"), function(el) {
+      el.addEventListener("click", function() {
+        var id = el.getAttribute("data-id");
+        var c = cocktails.filter(function(x){ return x.id === id; })[0];
+        if (c) openDetailModal(c);
+      });
+    });
+  }
+
+  // ---------- Modals: detail / edit ----------
+
+  function closeModal() { modalRoot.innerHTML = ""; }
+
+  function openDetailModal(c) {
+    var rating = avgRating(c.tastingEntries);
+    var ingredientsHtml = (c.ingredients || []).map(function(i) { return "<li>" + escapeHtml(i) + "</li>"; }).join("");
+    var tastingHtml = (c.tastingEntries || []).slice().reverse().map(function(t) {
+      var stars = t.rating ? starsHtml(t.rating) : "";
+      var dateStr = t.date ? new Date(t.date).toLocaleDateString() : "";
+      return '<div class="tasting-entry"><div class="meta">' + escapeHtml(dateStr) + (stars ? ' · ' + stars : '') + '</div><div>' + escapeHtml(t.note || "") + '</div></div>';
+    }).join("");
+
+    var html = '' +
+      '<div class="modal-overlay" id="overlay">' +
+        '<div class="modal">' +
+          '<div class="modal-close-row"><button class="ghost" id="closeBtn">✕ Close</button></div>' +
+          '<h2>' + escapeHtml(c.name || "Untitled") + '</h2>' +
+          '<div style="color:var(--text-dim);font-style:italic;margin-bottom:14px;">' + escapeHtml(c.category || "") + ' · ' + escapeHtml(statusLabel(c.status)) + '</div>' +
+          (c.spirit ? '<div class="detail-section"><div class="detail-label">Spirit</div><div class="detail-value">' + escapeHtml(c.spirit) + '</div></div>' : '') +
+          '<div class="detail-section"><div class="detail-label">Ingredients</div><ul class="detail-ingredients">' + (ingredientsHtml || '<li style="color:var(--text-faint);">None listed</li>') + '</ul></div>' +
+          (c.method ? '<div class="detail-section"><div class="detail-label">Method</div><div class="detail-value">' + escapeHtml(c.method) + '</div></div>' : '') +
+          (c.notes ? '<div class="detail-section"><div class="detail-label">Notes</div><div class="detail-value">' + escapeHtml(c.notes) + '</div></div>' : '') +
+          (c.nameStory ? '<div class="detail-section"><div class="detail-label">Name Story</div><div class="detail-value">' + escapeHtml(c.nameStory) + '</div></div>' : '') +
+          (c.source ? '<div class="detail-section"><div class="detail-label">Source</div><div class="detail-value">' + escapeHtml(c.source) + '</div></div>' : '') +
+          '<div class="detail-section">' +
+            '<div class="detail-label">Taste Test Notes' + (rating !== null ? ' — avg ' + starsHtml(rating) + ' (' + rating.toFixed(1) + ')' : '') + '</div>' +
+            '<div id="tastingList">' + (tastingHtml || '<div style="color:var(--text-faint);font-style:italic;">No notes yet.</div>') + '</div>' +
+            '<div style="margin-top:10px;">' +
+              '<div class="star-row" id="newStarRow" data-rating="0">' + [1,2,3,4,5].map(function(i){ return '<span class="star" data-val="' + i + '">☆</span>'; }).join("") + '</div>' +
+              '<textarea id="newNoteText" rows="2" placeholder="Add a tasting note…" style="width:100%;"></textarea>' +
+              '<button class="primary" id="addNoteBtn" style="margin-top:8px;">Add Note</button>' +
+            '</div>' +
+          '</div>' +
+          '<div class="modal-actions"><div class="left"><button id="editBtn">Edit</button><button class="danger" id="deleteBtn">Delete</button></div></div>' +
+        '</div>' +
+      '</div>';
+    modalRoot.innerHTML = html;
+
+    document.getElementById("closeBtn").addEventListener("click", closeModal);
+    document.getElementById("overlay").addEventListener("click", function(e) { if (e.target.id === "overlay") closeModal(); });
+    document.getElementById("editBtn").addEventListener("click", function() { openEditModal(c); });
+    document.getElementById("deleteBtn").addEventListener("click", function() {
+      if (confirm('Delete "' + (c.name || "this cocktail") + '" permanently?')) { deleteCocktail(c.id); closeModal(); }
+    });
+    var starRow = document.getElementById("newStarRow");
+    Array.prototype.forEach.call(starRow.querySelectorAll(".star"), function(starEl) {
+      starEl.addEventListener("click", function() {
+        var val = parseInt(starEl.getAttribute("data-val"), 10);
+        starRow.setAttribute("data-rating", String(val));
+        Array.prototype.forEach.call(starRow.querySelectorAll(".star"), function(s2) {
+          var v2 = parseInt(s2.getAttribute("data-val"), 10);
+          s2.textContent = v2 <= val ? "★" : "☆";
+          s2.classList.toggle("filled", v2 <= val);
+        });
+      });
+    });
+    document.getElementById("addNoteBtn").addEventListener("click", function() {
+      var note = document.getElementById("newNoteText").value.trim();
+      var rating = parseInt(starRow.getAttribute("data-rating"), 10) || 0;
+      if (!note && !rating) return;
+      addTastingNote(c.id, note, rating);
+      closeModal();
+    });
+  }
+
+  function openEditModal(existing) {
+    var c = existing || {};
+    var isNew = !existing;
+    var ingredients = (c.ingredients || [""]).slice();
+    if (!ingredients.length) ingredients = [""];
+
+    function ingredientsRowsHtml() {
+      return ingredients.map(function(val) {
+        return '<div class="ingredient-row"><input type="text" class="ingredient-input" value="' + escapeHtml(val) + '" placeholder="e.g. 2 oz bourbon"><button class="ghost removeIngBtn" type="button">✕</button></div>';
+      }).join("");
+    }
+    var catOptionsHtml = CATEGORIES.map(function(cat) {
+      return '<option value="' + escapeHtml(cat) + '"' + (c.category === cat ? " selected" : "") + '>' + escapeHtml(cat) + '</option>';
+    }).join("");
+    var statusOptionsHtml = STATUS_OPTIONS.map(function(o) {
+      return '<option value="' + o.value + '"' + (c.status === o.value ? " selected" : "") + '>' + o.label + '</option>';
+    }).join("");
+
+    var html = '' +
+      '<div class="modal-overlay" id="overlay">' +
+        '<div class="modal">' +
+          '<div class="modal-close-row"><button class="ghost" id="closeBtn">✕ Close</button></div>' +
+          '<h2>' + (isNew ? "Add Cocktail" : "Edit Cocktail") + '</h2>' +
+          '<div class="field"><label>Name</label><input type="text" id="f_name" value="' + escapeHtml(c.name || "") + '" placeholder="e.g. The Siren' + "'" + 's Call"></div>' +
+          '<div class="field"><label>Category</label><select id="f_category">' + catOptionsHtml + '</select></div>' +
+          '<div class="field"><label>Status</label><select id="f_status">' + statusOptionsHtml + '</select></div>' +
+          '<div class="field"><label>Spirit / Base</label><input type="text" id="f_spirit" value="' + escapeHtml(c.spirit || "") + '" placeholder="e.g. Bourbon, high-proof"></div>' +
+          '<div class="field"><label>Ingredients</label><div id="ingredientsList">' + ingredientsRowsHtml() + '</div><button class="ghost" id="addIngBtn" type="button">+ Add Ingredient</button></div>' +
+          '<div class="field"><label>Method</label><textarea id="f_method" rows="3" placeholder="Stir / shake / build instructions…">' + escapeHtml(c.method || "") + '</textarea></div>' +
+          '<div class="field"><label>Notes</label><textarea id="f_notes" rows="3" placeholder="Tips, variations, adjustments…">' + escapeHtml(c.notes || "") + '</textarea></div>' +
+          '<div class="field"><label>Name Story</label><textarea id="f_nameStory" rows="2" placeholder="Meaning behind the name, who it' + "'" + 's for, etc.">' + escapeHtml(c.nameStory || "") + '</textarea></div>' +
+          '<div class="field"><label>Source</label><input type="text" id="f_source" value="' + escapeHtml(c.source || "") + '" placeholder="e.g. Whisky Advocate, personal recipe"></div>' +
+          '<div class="modal-actions"><div class="left"></div><button class="primary" id="saveBtn">Save</button></div>' +
+        '</div>' +
+      '</div>';
+    modalRoot.innerHTML = html;
+
+    document.getElementById("closeBtn").addEventListener("click", closeModal);
+    document.getElementById("overlay").addEventListener("click", function(e) { if (e.target.id === "overlay") closeModal(); });
+
+    function bindIngredientButtons() {
+      var list = document.getElementById("ingredientsList");
+      Array.prototype.forEach.call(list.querySelectorAll(".removeIngBtn"), function(btn) {
+        btn.onclick = function() {
+          var row = btn.closest(".ingredient-row");
+          if (list.querySelectorAll(".ingredient-row").length > 1) row.remove();
+          else row.querySelector(".ingredient-input").value = "";
+        };
+      });
+    }
+    bindIngredientButtons();
+    document.getElementById("addIngBtn").addEventListener("click", function() {
+      var list = document.getElementById("ingredientsList");
+      var div = document.createElement("div");
+      div.className = "ingredient-row";
+      div.innerHTML = '<input type="text" class="ingredient-input" placeholder="e.g. ¼ oz lemon juice"><button class="ghost removeIngBtn" type="button">✕</button>';
+      list.appendChild(div);
+      bindIngredientButtons();
+      div.querySelector("input").focus();
+    });
+
+    document.getElementById("saveBtn").addEventListener("click", function() {
+      var name = document.getElementById("f_name").value.trim();
+      if (!name) { alert("Please give the cocktail a name."); return; }
+      var ingredientInputs = document.querySelectorAll("#ingredientsList .ingredient-input");
+      var ingredientsOut = Array.prototype.map.call(ingredientInputs, function(inp) { return inp.value.trim(); }).filter(function(v) { return v.length > 0; });
+      var data = {
+        name: name,
+        category: document.getElementById("f_category").value,
+        status: document.getElementById("f_status").value,
+        spirit: document.getElementById("f_spirit").value.trim(),
+        ingredients: ingredientsOut,
+        method: document.getElementById("f_method").value.trim(),
+        notes: document.getElementById("f_notes").value.trim(),
+        nameStory: document.getElementById("f_nameStory").value.trim(),
+        source: document.getElementById("f_source").value.trim()
+      };
+      if (isNew) {
+        data.id = slugify(data.name);
+        data.tastingEntries = [];
+        cocktails.push(data);
+      } else {
+        data.id = c.id;
+        data.tastingEntries = c.tastingEntries || [];
+        var idx = cocktails.findIndex(function(x) { return x.id === c.id; });
+        if (idx >= 0) cocktails[idx] = data;
+      }
+      closeModal();
+      render();
+      pushToGitHub();
+    });
+  }
+
+  // ---------- Data operations ----------
+
+  function deleteCocktail(id) {
+    cocktails = cocktails.filter(function(c) { return c.id !== id; });
+    render();
+    pushToGitHub();
+  }
+  function addTastingNote(id, note, rating) {
+    var idx = cocktails.findIndex(function(c) { return c.id === id; });
+    if (idx < 0) return;
+    var entry = { date: new Date().toISOString(), note: note, rating: rating || null };
+    if (!cocktails[idx].tastingEntries) cocktails[idx].tastingEntries = [];
+    cocktails[idx].tastingEntries.push(entry);
+    render();
+    pushToGitHub();
+  }
+
+  // ---------- GitHub settings modal ----------
+
+  function openSettingsModal(forcedOpen) {
+    var s = settings || { owner: "", repo: "", path: "cocktails.json", token: "" };
+    var html = '' +
+      '<div class="modal-overlay" id="overlay">' +
+        '<div class="modal">' +
+          (forcedOpen ? '' : '<div class="modal-close-row"><button class="ghost" id="closeBtn">✕ Close</button></div>') +
+          '<h2>GitHub Settings</h2>' +
+          '<div style="color:var(--text-dim);margin-bottom:14px;">Connect this device to your GitHub repo so your ledger syncs everywhere. This is entered once per device/browser.</div>' +
+          '<div class="field"><label>GitHub Username</label><input type="text" id="s_owner" value="' + escapeHtml(s.owner) + '" placeholder="e.g. scottdavis"></div>' +
+          '<div class="field"><label>Repository Name</label><input type="text" id="s_repo" value="' + escapeHtml(s.repo) + '" placeholder="e.g. speakeasy-ledger"></div>' +
+          '<div class="field"><label>Data File Path</label><input type="text" id="s_path" value="' + escapeHtml(s.path) + '" placeholder="cocktails.json"><div class="hint">Leave as cocktails.json unless you have a reason to change it.</div></div>' +
+          '<div class="field"><label>Personal Access Token</label><input type="password" id="s_token" value="' + escapeHtml(s.token) + '" placeholder="ghp_… or github_pat_…"><div class="hint">Needs Contents: Read and write permission on this repo. Stored only in this browser.</div></div>' +
+          '<div id="settingsError" class="error-box" style="display:none;"></div>' +
+          '<div class="modal-actions"><div class="left"></div><button class="primary" id="saveSettingsBtn">Save &amp; Connect</button></div>' +
+        '</div>' +
+      '</div>';
+    modalRoot.innerHTML = html;
+    if (!forcedOpen) {
+      document.getElementById("closeBtn").addEventListener("click", closeModal);
+      document.getElementById("overlay").addEventListener("click", function(e) { if (e.target.id === "overlay") closeModal(); });
+    }
+    document.getElementById("saveSettingsBtn").addEventListener("click", function() {
+      var owner = document.getElementById("s_owner").value.trim();
+      var repo = document.getElementById("s_repo").value.trim();
+      var path = document.getElementById("s_path").value.trim() || "cocktails.json";
+      var token = document.getElementById("s_token").value.trim();
+      var errEl = document.getElementById("settingsError");
+      if (!owner || !repo || !token) {
+        errEl.textContent = "Username, repository name, and token are all required.";
+        errEl.style.display = "block";
+        return;
+      }
+      settings = { owner: owner, repo: repo, path: path, token: token };
+      saveSettings(settings);
+      closeModal();
+      isSyncing = true;
+      render();
+      fetchFromGitHub();
+    });
+  }
+
+  // ---------- Init ----------
+
+  searchInput.addEventListener("input", function() { currentFilter.search = searchInput.value; render(); });
+  categoryFilter.addEventListener("change", function() { currentFilter.category = categoryFilter.value; render(); });
+  statusFilter.addEventListener("change", function() { currentFilter.status = statusFilter.value; render(); });
+  addBtn.addEventListener("click", function() { openEditModal(null); });
+  syncBtn.addEventListener("click", function() { isSyncing = true; render(); fetchFromGitHub(); });
+  settingsBtn.addEventListener("click", function() { openSettingsModal(false); });
+
+  settings = loadSettings();
+  if (!settings) {
+    var cached = loadLocalCache();
+    if (cached) { cocktails = cached.cocktails; currentSha = cached.sha; }
+    else { cocktails = SEED_DATA.slice(); }
+    render();
+    openSettingsModal(true);
+  } else {
+    isSyncing = true;
+    render();
+    fetchFromGitHub();
+  }
+})();
+</script>
+</body>
+</html>
