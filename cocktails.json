@@ -19,10 +19,9 @@
     "tastingEntries": []
   },
   {
-    "id": "spirit-room",
+    "name": "Spirit Room",
     "category": "Old Fashioned Variations",
     "status": "named",
-    "name": "Spirit Room",
     "spirit": "Bourbon (Woodford Reserve Double Oaked recommended)",
     "ingredients": [
       "2 oz bourbon",
@@ -32,9 +31,10 @@
       "Graham cracker rim or toasted marshmallow garnish"
     ],
     "method": "Rim rocks glass with honey + crushed graham crackers. Stir bourbon, syrup, bitters with ice 30 sec. Strain over one large ice sphere into prepared glass.",
-    "notes": "V2 improves on the original — single homemade Magic Syrup replaces separate coconut/butterscotch syrups.",
+    "notes": "V2 improves on the original — single homemade Magic Syrup replaces separate coconut/butterscotch syrups.\n\nConsider Middle West Cask Strength Wheat Whiskey",
     "nameStory": "A ship's \"spirit room\" was the actual compartment where liquor stores were kept — kept as final name, no rename needed.",
     "source": "",
+    "id": "spirit-room",
     "tastingEntries": []
   },
   {
