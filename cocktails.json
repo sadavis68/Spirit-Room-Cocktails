@@ -35,7 +35,13 @@
     "nameStory": "A ship's \"spirit room\" was the actual compartment where liquor stores were kept.  Namesake cocktail for speakeasy",
     "source": "",
     "id": "spirit-room",
-    "tastingEntries": []
+    "tastingEntries": [
+      {
+        "date": "2026-10-09T22:47:45.885Z",
+        "note": "Used Redemption High Rye Bourbon. Can definitely taste the coconut. Taste a bit hot to me. Maybe a double oak would be better.",
+        "rating": null
+      }
+    ]
   },
   {
     "name": "Marcy's Windfall",
