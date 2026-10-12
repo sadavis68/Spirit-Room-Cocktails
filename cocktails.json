@@ -40,11 +40,6 @@
         "date": "2026-10-09T22:47:45.885Z",
         "note": "Used Redemption High Rye Bourbon. Can definitely taste the coconut. Taste a bit hot to me. Maybe a double oak would be better.",
         "rating": null
-      },
-      {
-        "date": "2026-10-12T00:07:48.999Z",
-        "note": "Used Sagamore Double Oak Rye. Too astringent and bitey.",
-        "rating": null
       }
     ]
   },
@@ -322,10 +317,9 @@
     "tastingEntries": []
   },
   {
-    "id": "bow-wave-sea-spray",
+    "name": "Bow Wave / Sea Spray",
     "category": "Gin",
     "status": "named",
-    "name": "Bow Wave / Sea Spray",
     "spirit": "London Dry-style gin",
     "ingredients": [
       "2 oz gin",
@@ -337,10 +331,11 @@
       "1 oz soda water",
       "Edible flower or citrus peel garnish"
     ],
-    "method": "Combine all ingredients except soda water in a shaker. Dry shake (no ice) to emulsify. Add ice, shake again to chill. Strain into Collins glass over fresh ice. Top with soda. Garnish.",
+    "method": "Combine all ingredients except soda water in a shaker. Dry shake (no ice) to emulsify. Add ice, shake again to chill. Strain into Collins glass over fresh ice. Top with soda. Garnish.\n\nCarrot-Turmeric Syrup:\n4 oz carrot juice\n4 oz white sugar\n¼ tsp turmeric powder\n\nMethod: Combine everything in a saucepan. Simmer over medium heat for about 10 minutes, stirring until the sugar dissolves. Remove from heat and let it cool. Strain it thoroughly before bottling.\n\nYield: Enough for about six drinks, since each one uses ¾ oz.",
     "notes": "Two name options to compare after tasting — Bow Wave (as-is, no salt) or Sea Spray (same recipe + a pinch of salt added).",
     "nameStory": "Bow Wave = the curling, foamy wave a ship pushes ahead of its bow, matching the foam cap. Sea Spray = fine mist off breaking waves.",
     "source": "Wine Enthusiast, June/July 2026",
+    "id": "bow-wave-sea-spray",
     "tastingEntries": []
   },
   {
