@@ -195,10 +195,9 @@
     "tastingEntries": []
   },
   {
-    "id": "kentucky-islander",
+    "name": "Kentucky Islander",
     "category": "Bourbon & Rye Signatures",
     "status": "named",
-    "name": "Kentucky Islander",
     "spirit": "Bourbon",
     "ingredients": [
       "2 oz bourbon",
@@ -208,9 +207,10 @@
       "Coconut flakes (optional garnish)"
     ],
     "method": "Shake all with ice until chilled, strain into ice-filled chilled glass, garnish.",
-    "notes": "Shaken/tiki-leaning rather than stirred — different profile than the rest of this category. Already has a nautical-flavored name.",
+    "notes": "Shaken/tiki-leaning rather than stirred",
     "nameStory": "",
     "source": "",
+    "id": "kentucky-islander",
     "tastingEntries": []
   },
   {
