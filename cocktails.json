@@ -510,5 +510,20 @@
     "source": "Personal menu photo + reconstructed recipe",
     "id": "powder-monkey",
     "tastingEntries": []
+  },
+  {
+    "name": "Salty Sally's Shrub Snub",
+    "category": "Tequila/Mezcal",
+    "status": "draft",
+    "spirit": "Blanco Tequila",
+    "ingredients": [
+      "2 oz blanco tequila ¾ oz fresh lime juice ¼ oz pineapple-jalapeño vinegar ¾ oz agave syrup (1:1 agave nectar to water) 3 drops saline solution Half-salted chile-lime rim Lime wheel"
+    ],
+    "method": "",
+    "notes": "",
+    "nameStory": "",
+    "source": "",
+    "id": "salty-sally-s-shrub-snub-0c6w1",
+    "tastingEntries": []
   }
 ]
