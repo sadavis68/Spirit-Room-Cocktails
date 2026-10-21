@@ -530,5 +530,25 @@
     "source": "",
     "id": "salty-sally-s-shrub-snub-0c6w1",
     "tastingEntries": []
+  },
+  {
+    "name": "Fig Old Fashioned",
+    "category": "Old Fashioned Variations",
+    "status": "draft",
+    "spirit": "Bourbon",
+    "ingredients": [
+      "2 oz Jackson Purchase Full Proof bourbon",
+      "½ oz fig syrup",
+      "2 dashes Angostura bitters",
+      "1 dash orange bitters",
+      "2 drops saline (optional)",
+      "Expressed orange peel + fig quarter or dried fig slice garnish"
+    ],
+    "method": "Stir with ice 30-35 sec, strain over one large cube, express orange peel over the drink.",
+    "notes": "Candidate to add or to replace one of the five Old Fashioneds. Too hot: stir longer or use ¾ oz syrup. Too sweet/jammy: ¼-⅓ oz syrup and add the second dash of orange bitters. More depth: ¼ tsp Nocino, or 1 dash black walnut bitters at most.",
+    "nameStory": "Needs a nautical name.",
+    "source": "Personal recipe",
+    "id": "fig-old-fashioned-lnqxh",
+    "tastingEntries": []
   }
 ]
