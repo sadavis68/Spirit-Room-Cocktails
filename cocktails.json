@@ -517,11 +517,16 @@
     "status": "draft",
     "spirit": "Blanco Tequila",
     "ingredients": [
-      "2 oz blanco tequila ¾ oz fresh lime juice ¼ oz pineapple-jalapeño vinegar ¾ oz agave syrup (1:1 agave nectar to water) 3 drops saline solution Half-salted chile-lime rim Lime wheel"
+      "2 oz blanco tequila",
+      "¾ oz fresh lime juice",
+      "¼ oz pineapple-jalapeño vinegar",
+      "¾ oz agave syrup (1:1 agave nectar to water)",
+      "3 drops saline solution",
+      "Lime wheel"
     ],
-    "method": "",
-    "notes": "",
-    "nameStory": "",
+    "method": "Rim half the glass with chile-lime salt (Tajín). Shake tequila, lime, vinegar, agave syrup, and saline with ice 10-12 sec. Double strain over one large cube. If using a frozen homemade vinegar cube (½ oz cube = ¼ oz vinegar + ¼ oz water), drop it into the shaker and shake about 10 sec.",
+    "notes": "Draft, untested. Vinegar tuning: ⅛-⅜ oz to taste. If store-bought vinegar is sweetened, cut agave to ½ oz or less. \nBaseline version to compare: 2 oz blanco tequila, 1 oz lime, ¾ oz agave syrup, 3 drops saline, 2 thin jalapeño slices muddled with the syrup. Try reposado tequila for a richer version, or Demerara syrup instead of agave. Heat dial: 1 jalapeño slice mild, 3 for Sally at her angriest.",
+    "nameStory": "Named for my friend Sally, a tequila fan who was incensed at not having a cocktail named after her. \"Salty\" = sailor slang, annoyed, and the salt rim. \"Shrub\" = the style (pineapple-jalapeño vinegar). \"Snub\" = the joke, and a real nautical term (to snub a line is to stop a running rope short). Bar nickname: Salty Sally.",
     "source": "",
     "id": "salty-sally-s-shrub-snub-0c6w1",
     "tastingEntries": []
