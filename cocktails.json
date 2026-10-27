@@ -502,15 +502,15 @@
     "status": "named",
     "spirit": "Rhum agricole + banana liqueur",
     "ingredients": [
-      "2 oz rhum agricole (blanc or vieux)",
-      "0.75 oz banana liqueur",
+      "2 oz Spiced Rum",
+      "1.0 oz banana liqueur",
       "1 oz coconut cream",
-      "1 oz pineapple juice",
-      "0.75 oz fresh lime juice",
-      "Pineapple wedge or banana chip garnish"
+      "1oz milk",
+      "Pineapple wedge or banana chip garnish",
+      "1 oz Creme de Cacao"
     ],
     "method": "Shake all hard with ice, strain into tiki mug or rocks glass over crushed ice, garnish.",
-    "notes": "",
+    "notes": "Updated via conversation with Big Poppa",
     "nameStory": "\"Powder monkey\" = historic term for the young sailors who carried gunpowder to a ship's cannons. Nods to Peter's nickname \"Big Poppa.\"",
     "source": "Personal menu photo + reconstructed recipe",
     "id": "powder-monkey",
