@@ -340,7 +340,13 @@
     "nameStory": "Named in honor of McKenna and her love of ladybugs.  Ladybirds are documented to swarm across open water during migration (the 1976 UK ladybird invasion) — \"landfall\" nods to that journey's end.",
     "source": "",
     "id": "ladybirds-landfall",
-    "tastingEntries": []
+    "tastingEntries": [
+      {
+        "date": "2026-11-22T23:16:29.886Z",
+        "note": "Tart and sweet and floral, but not too much of any of them. Used muddled raspberries vs raspberry liquer",
+        "rating": null
+      }
+    ]
   },
   {
     "name": "Bow Wave / Sea Spray",
