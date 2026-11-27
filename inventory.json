@@ -1004,7 +1004,7 @@
       "name": "Fresh raspberries",
       "category": "Juices, Fruit & Mixers",
       "kind": "bought",
-      "status": "out",
+      "status": "low",
       "aliases": [
         "raspberries",
         "raspberry"
