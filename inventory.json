@@ -900,7 +900,7 @@
       "name": "Oranges",
       "category": "Juices, Fruit & Mixers",
       "kind": "bought",
-      "status": "out",
+      "status": "in",
       "aliases": [
         "orange",
         "oranges",
