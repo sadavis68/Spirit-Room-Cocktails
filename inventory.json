@@ -232,7 +232,7 @@
       "name": "Mezcal",
       "category": "Other Spirits",
       "kind": "bought",
-      "status": "out",
+      "status": "in",
       "aliases": [
         "mezcal"
       ],
