@@ -91,7 +91,7 @@
       "name": "Rye whiskey",
       "category": "Whiskey",
       "kind": "bought",
-      "status": "out",
+      "status": "in",
       "aliases": [
         "rye",
         "rye whiskey"
