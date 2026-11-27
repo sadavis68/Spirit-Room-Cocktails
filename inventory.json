@@ -245,7 +245,7 @@
       "name": "Vodka",
       "category": "Other Spirits",
       "kind": "bought",
-      "status": "out",
+      "status": "in",
       "aliases": [
         "vodka",
         "tito's",
