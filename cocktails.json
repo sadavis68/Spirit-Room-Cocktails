@@ -16,7 +16,13 @@
     "nameStory": "Named for the green flash: an optical phenomenon sometimes seen at sea right at sunset over the ocean.",
     "source": "",
     "id": "green-flash",
-    "tastingEntries": []
+    "tastingEntries": [],
+    "needs": [
+      "bourbon-high-proof",
+      "green-chartreuse",
+      "angostura",
+      "oranges"
+    ]
   },
   {
     "name": "Spirit Room",
@@ -61,6 +67,13 @@
         "note": "Switched to Middle West Cask Strength Wheat after the rye-heavy versions (Redemption High Rye, Sagamore Double Oaked Rye) were drying and bitey; the wheat version is not. Chocolate stays capped at 1 dash so it doesn't overtake the other flavors. If it ever tastes flat, try 2 drops saline.",
         "rating": null
       }
+    ],
+    "needs": [
+      "middle-west-wheat",
+      "magic-syrup",
+      "walnut-bitters",
+      "chocolate-bitters",
+      "graham-crackers"
     ]
   },
   {
@@ -81,7 +94,16 @@
     "nameStory": "Named for Marcy, who this drink converted into an Old Fashioned fan. \"Windfall\" = an unexpected favorable wind / unexpected good fortune.",
     "source": "",
     "id": "marcys-windfall",
-    "tastingEntries": []
+    "tastingEntries": [],
+    "needs": [
+      "bourbon",
+      "banana-liqueur",
+      "demerara-syrup",
+      "walnut-bitters",
+      "chocolate-bitters",
+      "banana-chips",
+      "nutmeg"
+    ]
   },
   {
     "name": "Full Fathom Five",
@@ -101,7 +123,15 @@
     "nameStory": "From Shakespeare's The Tempest — \"something rich and strange.\"",
     "source": "",
     "id": "full-fathom-five",
-    "tastingEntries": []
+    "tastingEntries": [],
+    "needs": [
+      "knob-creek-smoked-maple",
+      "bourbon",
+      "nocino",
+      "maple-syrup",
+      "angostura",
+      "oranges"
+    ]
   },
   {
     "name": "Stipo's Even Keel",
@@ -118,7 +148,11 @@
     "nameStory": "\"Even keel\" = balanced and steady, fitting since it's the classic ratio rebalanced.",
     "source": "",
     "id": "stepes-even-keel",
-    "tastingEntries": []
+    "tastingEntries": [],
+    "needs": [
+      "wheated-bourbon",
+      "simple-syrup"
+    ]
   },
   {
     "id": "roasted-duck-fat-boulevardier",
@@ -137,7 +171,14 @@
     "notes": "Reintroduces the Boulevardier concept after the plain classic was removed — fat wash makes it different enough to warrant its own entry. Needs a nautical name.",
     "nameStory": "",
     "source": "Personal recipe (Fee Brothers Fat Wash Drops)",
-    "tastingEntries": []
+    "tastingEntries": [],
+    "needs": [
+      "bourbon",
+      "campari",
+      "sweet-vermouth",
+      "fatwash-duck",
+      "oranges"
+    ]
   },
   {
     "id": "bacon-vieux-carre",
@@ -164,6 +205,15 @@
         "note": "This is too sweet.  Need to cut back on the B&B or I crease the rye. Try 1 rye to . 75 vermouth and . 75 B&B",
         "rating": null
       }
+    ],
+    "needs": [
+      "rye",
+      "sweet-vermouth",
+      "cognac",
+      "benedictine",
+      "angostura",
+      "fatwash-bacon",
+      "lemons"
     ]
   },
   {
@@ -184,7 +234,15 @@
     "nameStory": "",
     "source": "Whisky Advocate",
     "id": "capn-wheel",
-    "tastingEntries": []
+    "tastingEntries": [],
+    "needs": [
+      "crunch-infusion",
+      "amaretto",
+      "angostura",
+      "xocolatl-bitters",
+      "absinthe",
+      "crunch-cereal"
+    ]
   },
   {
     "name": "The Loggerhead",
@@ -203,7 +261,15 @@
     "nameStory": "A \"loggerhead\" was the red-hot iron rod historically plunged into flip drinks to warm and froth them — genuine flip-cocktail history.",
     "source": "",
     "id": "the-loggerhead",
-    "tastingEntries": []
+    "tastingEntries": [],
+    "needs": [
+      "bourbon",
+      "magic-syrup",
+      "coconut-cream",
+      "eggs",
+      "dark-chocolate",
+      "sea-salt"
+    ]
   },
   {
     "name": "Kentucky Islander",
@@ -222,7 +288,13 @@
     "nameStory": "",
     "source": "",
     "id": "kentucky-islander",
-    "tastingEntries": []
+    "tastingEntries": [],
+    "needs": [
+      "bourbon",
+      "coconut-syrup",
+      "limes",
+      "angostura"
+    ]
   },
   {
     "name": "Smoke & Brine Manhattan",
@@ -241,7 +313,14 @@
     "nameStory": "States the drink's smoke dome + saline elements directly. Manhattan itself is reached by water.",
     "source": "",
     "id": "smoke-and-brine-manhattan",
-    "tastingEntries": []
+    "tastingEntries": [],
+    "needs": [
+      "rye",
+      "sweet-vermouth",
+      "angostura",
+      "saline",
+      "cocktail-cherries"
+    ]
   },
   {
     "name": "Squall Line",
@@ -262,7 +341,16 @@
     "nameStory": "A fast-moving storm front",
     "source": "Whisky Advocate (Aug 2026)",
     "id": "squall-line",
-    "tastingEntries": []
+    "tastingEntries": [],
+    "needs": [
+      "rye",
+      "jamaican-rum",
+      "campari",
+      "limes",
+      "demerara-syrup",
+      "pineapple-juice",
+      "pineapple-wedge"
+    ]
   },
   {
     "name": "The Dead Reckoning",
@@ -282,7 +370,15 @@
     "nameStory": "Dead reckoning: navigating by estimated calculation rather than fixed landmarks — fitting since this riff estimates the classic's amaro component with a substitute blend.",
     "source": "Personal email (Scott Davis)",
     "id": "the-dead-reckoning",
-    "tastingEntries": []
+    "tastingEntries": [],
+    "needs": [
+      "bourbon",
+      "house-amaro-mix",
+      "lemon-simple-syrup",
+      "aperol",
+      "fernet",
+      "lemons"
+    ]
   },
   {
     "name": "The Undertow",
@@ -301,7 +397,13 @@
     "nameStory": "Undertow: a hidden, powerful current beneath the surface",
     "source": "",
     "id": "the-undertow",
-    "tastingEntries": []
+    "tastingEntries": [],
+    "needs": [
+      "bourbon",
+      "grapefruit",
+      "lemons",
+      "honey-pineapple-syrup"
+    ]
   },
   {
     "name": "The Siren's Call",
@@ -320,7 +422,13 @@
     "nameStory": "Mythological sea sirens, luring with sweetness then holding captive with bitterness.  Named for owner's wife",
     "source": "Personal recipe development",
     "id": "the-sirens-call",
-    "tastingEntries": []
+    "tastingEntries": [],
+    "needs": [
+      "rye",
+      "dark-rum-50",
+      "aperol",
+      "punt-e-mes"
+    ]
   },
   {
     "name": "Ladybird's Landfall",
@@ -351,6 +459,13 @@
         "note": "**Ladybird's Landfall, sparkling variation** (like a French 75)\n- Swap the soda for 2-3 oz chilled brut champagne, cava, or prosecco.\n- Build: 1 oz gin, ½ oz hibiscus syrup, ¼ oz lemon, 2 muddled raspberries. Shake, double strain into a flute or coupe, top with bubbles, and garnish with a blackberry.\n- Why: It's drier and more elegant than soda, with a ruby color. Cut the lemon (¼ oz) and gin (1 oz) so the drink isn't too sharp or too strong.\n- Notes: Brut is the right dryness, and cava or prosecco is cheaper. A sparkling rosé would push the berry flavor.",
         "rating": null
       }
+    ],
+    "needs": [
+      "gin",
+      "hibiscus-syrup",
+      "lemons",
+      "raspberries",
+      "blackberries"
     ]
   },
   {
@@ -373,7 +488,17 @@
     "nameStory": "Bow Wave = the curling, foamy wave a ship pushes ahead of its bow, matching the foam cap. Sea Spray = fine mist off breaking waves.",
     "source": "Wine Enthusiast, June/July 2026",
     "id": "bow-wave-sea-spray",
-    "tastingEntries": []
+    "tastingEntries": [],
+    "needs": [
+      "gin",
+      "lemons",
+      "tangerine-juice",
+      "carrot-turmeric-syrup",
+      "foam-agent",
+      "orange-bitters",
+      "club-soda",
+      "edible-flowers"
+    ]
   },
   {
     "id": "dragonfly-tbd",
@@ -388,7 +513,8 @@
     "notes": "Dragonfly theme to develop.",
     "nameStory": "",
     "source": "",
-    "tastingEntries": []
+    "tastingEntries": [],
+    "needs": []
   },
   {
     "name": "Land Ho!",
@@ -408,7 +534,15 @@
     "nameStory": "The classic sailor's cry upon first sighting land; ties to the historical tradition of doves/pigeons signaling land was near, echoing \"Colomba\"/dove and its Paloma namesake.",
     "source": "Decanter, July 2026",
     "id": "land-ho",
-    "tastingEntries": []
+    "tastingEntries": [],
+    "needs": [
+      "blanco-tequila",
+      "campari",
+      "passion-fruit-syrup",
+      "lemons",
+      "grapefruit-soda",
+      "oranges"
+    ]
   },
   {
     "name": "Midwatch Sour",
@@ -430,7 +564,16 @@
     "nameStory": "Midwatch: the real naval term for the overnight watch, midnight to 4am — fits a late-night pour.",
     "source": "Magazine feature (image upload)",
     "id": "midwatch-sour",
-    "tastingEntries": []
+    "tastingEntries": [],
+    "needs": [
+      "mezcal",
+      "meletti",
+      "orgeat",
+      "campari",
+      "lemons",
+      "orange-bitters",
+      "cocktail-cherries"
+    ]
   },
   {
     "name": "The Sozzled Sandpiper",
@@ -450,7 +593,14 @@
     "nameStory": "Coastal bird theme (sandpiper) + \"sozzled\" (drunk slang), matching the boozy Vesper-style profile.",
     "source": "Magazine feature (image upload)",
     "id": "sozzled-sandpiper",
-    "tastingEntries": []
+    "tastingEntries": [],
+    "needs": [
+      "vodka",
+      "lillet",
+      "pickled-ginger-brine",
+      "sea-salt",
+      "lemons"
+    ]
   },
   {
     "name": "Ahoy Molly",
@@ -469,7 +619,14 @@
     "nameStory": "Nautical greeting, named in honor of owner's niece Molly.",
     "source": "Magazine feature (image upload)",
     "id": "ahoy-molly",
-    "tastingEntries": []
+    "tastingEntries": [],
+    "needs": [
+      "dolin-blanc",
+      "absinthe",
+      "orgeat",
+      "club-soda",
+      "mint"
+    ]
   },
   {
     "name": "Mad Captain",
@@ -489,7 +646,13 @@
     "nameStory": "Nautical.",
     "source": "",
     "id": "mad-captain",
-    "tastingEntries": []
+    "tastingEntries": [],
+    "needs": [
+      "dark-rum",
+      "limes",
+      "coconut-cream",
+      "coconut-water"
+    ]
   },
   {
     "id": "navy-grog",
@@ -511,7 +674,16 @@
     "notes": "Family taste-tested: Cath 10/10, Peter 9/10, Laurie 8.7/10. Based on Don the Beachcomber's classic Navy Grog. Garnish: lime wheel/twist, mint sprig, or spent lime shell.",
     "nameStory": "Classic tiki drink, already nautical.",
     "source": "",
-    "tastingEntries": []
+    "tastingEntries": [],
+    "needs": [
+      "gold-demerara-rum",
+      "jamaican-rum",
+      "white-rum",
+      "limes",
+      "grapefruit",
+      "honey-mix",
+      "club-soda"
+    ]
   },
   {
     "name": "Powder Monkey (Big Poppa's Return)",
@@ -532,7 +704,12 @@
     "nameStory": "\"Powder monkey\" = historic term for the young sailors who carried gunpowder to a ship's cannons. Nods to Peter's nickname \"Big Poppa.\"",
     "source": "Personal menu photo + reconstructed recipe",
     "id": "powder-monkey",
-    "tastingEntries": []
+    "tastingEntries": [],
+    "needs": [
+      "banana-liqueur",
+      "coconut-cream",
+      "pineapple-wedge"
+    ]
   },
   {
     "name": "Salty Sally's Shrub Snub",
@@ -552,7 +729,14 @@
     "nameStory": "Named for my friend Sally, a tequila fan who was incensed at not having a cocktail named after her. \"Salty\" = sailor slang, annoyed, and the salt rim. \"Shrub\" = the style (pineapple-jalapeño vinegar). \"Snub\" = the joke, and a real nautical term (to snub a line is to stop a running rope short). Bar nickname: Salty Sally.",
     "source": "",
     "id": "salty-sally-s-shrub-snub-0c6w1",
-    "tastingEntries": []
+    "tastingEntries": [],
+    "needs": [
+      "blanco-tequila",
+      "limes",
+      "pj-vinegar",
+      "agave-syrup",
+      "saline"
+    ]
   },
   {
     "name": "Fig Old Fashioned",
@@ -572,6 +756,14 @@
     "nameStory": "Needs a nautical name.",
     "source": "Personal recipe",
     "id": "fig-old-fashioned-lnqxh",
-    "tastingEntries": []
+    "tastingEntries": [],
+    "needs": [
+      "jackson-purchase",
+      "fig-syrup",
+      "angostura",
+      "orange-bitters",
+      "oranges",
+      "figs"
+    ]
   }
 ]
