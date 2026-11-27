@@ -550,7 +550,7 @@
       "name": "Chocolate bitters",
       "category": "Bitters & Fat Washes",
       "kind": "bought",
-      "status": "out",
+      "status": "in",
       "aliases": [
         "chocolate bitters"
       ],
