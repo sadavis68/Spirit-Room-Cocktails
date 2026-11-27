@@ -13,6 +13,7 @@
     --border: #3a2c1e; --border-light: #4d3b28; --gold: #c9a24a; --gold-bright: #e0bd6a;
     --gold-dim: #8a7040; --red: #7a2222; --red-bright: #a5322f;
     --text: #e8ddc9; --text-dim: #a9997d; --text-faint: #6f6350;
+    --ok: #7fc97f; --warn: #d9a441; --bad: #e07a6e;
     --font-head: 'Cinzel', serif; --font-body: 'EB Garamond', Georgia, serif;
   }
   :root:not([data-theme="light"]) { color-scheme: dark; }
@@ -22,6 +23,7 @@
       --border: #d8c9a8; --border-light: #c4b28a; --gold: #96741f; --gold-bright: #7a5c14;
       --gold-dim: #a98d4a; --red: #7a2222; --red-bright: #a5322f;
       --text: #2a2013; --text-dim: #5a4c34; --text-faint: #8a7a5c;
+      --ok: #2f6b2f; --warn: #8a6212; --bad: #a5322f;
     }
   }
   :root[data-theme="light"] {
@@ -29,6 +31,7 @@
     --border: #d8c9a8; --border-light: #c4b28a; --gold: #96741f; --gold-bright: #7a5c14;
     --gold-dim: #a98d4a; --red: #7a2222; --red-bright: #a5322f;
     --text: #2a2013; --text-dim: #5a4c34; --text-faint: #8a7a5c;
+      --ok: #2f6b2f; --warn: #8a6212; --bad: #a5322f;
   }
   * { box-sizing: border-box; }
   body {
@@ -109,6 +112,64 @@
   .status-bar.error { color: var(--red-bright); }
   .status-bar.ok { color: var(--gold); }
   .error-box { background: rgba(165,50,47,0.1); border: 1px solid var(--red-bright); color: var(--red-bright); padding: 10px 14px; border-radius: 4px; margin-bottom: 14px; font-size: 14px; }
+
+  /* ---- Bar Stock ---- */
+  .category-title { align-items: center; gap: 10px; }
+  .toolbar.hidden { display: none; }
+  .tabs { max-width: 900px; margin: 14px auto 0; padding: 0 16px; display: flex; gap: 6px; }
+  .tab { flex: 1; border: 1px solid var(--border); border-radius: 4px; color: var(--text-dim); padding: 11px 12px; font-size: 14px; }
+  .tab.active { border-color: var(--gold-dim); color: var(--gold-bright); background: rgba(201,162,74,0.12); }
+  #stockSearch { flex: 1; min-width: 160px; }
+  .banner { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; background: rgba(201,162,74,0.08); border: 1px solid var(--gold-dim); border-radius: 6px; padding: 10px 14px; margin-bottom: 14px; font-size: 15px; color: var(--text-dim); }
+  .banner b { color: var(--text); }
+  .avail { margin-top: 6px; font-size: 13px; }
+  .avail.ready { color: var(--ok); }
+  .avail.almost { color: var(--ok); }
+  .avail.missing { color: var(--bad); }
+  .avail .low { color: var(--warn); }
+  .stock-summary { color: var(--text-dim); font-style: italic; margin-bottom: 14px; font-size: 15px; }
+  .stock-summary b { color: var(--text); font-style: normal; }
+  .stock-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; background: var(--bg-card); border: 1px solid var(--border); border-left-width: 3px; border-radius: 6px; padding: 8px 12px; margin-bottom: 6px; }
+  .stock-row.in { border-left-color: var(--ok); }
+  .stock-row.low { border-left-color: var(--warn); }
+  .stock-row.out { border-left-color: var(--bad); }
+  .stock-main { flex: 1; min-width: 0; cursor: pointer; }
+  .stock-name { font-family: var(--font-head); font-size: 16px; }
+  .stock-meta { color: var(--text-faint); font-size: 13px; }
+  .stock-meta .unlock { color: var(--gold); }
+  .tag { font-family: var(--font-body); font-size: 11px; color: var(--text-faint); border: 1px solid var(--border); border-radius: 8px; padding: 0 6px; letter-spacing: 0; vertical-align: middle; }
+  .seg { display: flex; flex-shrink: 0; }
+  .seg-btn { border-radius: 0; margin-left: -1px; padding: 9px 12px; min-width: 52px; min-height: 40px; color: var(--text-dim); border-color: var(--border-light); }
+  .seg-btn:first-child { border-radius: 4px 0 0 4px; margin-left: 0; }
+  .seg-btn:last-child { border-radius: 0 4px 4px 0; }
+  .seg-btn.active.in { background: var(--ok); color: #101010; border-color: var(--ok); }
+  .seg-btn.active.low { background: var(--warn); color: #101010; border-color: var(--warn); }
+  .seg-btn.active.out { background: var(--bad); color: #101010; border-color: var(--bad); }
+  :root[data-theme="light"] .seg-btn.active { color: #fff; }
+  @media (prefers-color-scheme: light) { :root:not([data-theme="dark"]) .seg-btn.active { color: #fff; } }
+  .stock-li { display: flex; align-items: center; gap: 8px; }
+  .stock-li .sym { width: 1.2em; text-align: center; font-weight: 600; }
+  .stock-li.in .sym { color: var(--ok); }
+  .stock-li.low .sym { color: var(--warn); }
+  .stock-li.out .sym { color: var(--bad); }
+  .stock-state { margin-left: auto; font-size: 13px; color: var(--text-faint); font-style: italic; }
+  .status-dot { display: inline-block; width: 9px; height: 9px; border-radius: 50%; margin-right: 6px; vertical-align: middle; }
+  .status-dot.in { background: var(--ok); }
+  .status-dot.low { background: var(--warn); }
+  .status-dot.out { background: var(--bad); }
+  .chips { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 8px; }
+  .chip { display: inline-flex; align-items: center; background: var(--bg-card); border: 1px solid var(--border-light); border-radius: 14px; padding: 2px 4px 2px 10px; font-size: 15px; }
+  .chip button { padding: 2px 8px; font-size: 12px; }
+  .needs-results { display: flex; flex-direction: column; align-items: flex-start; margin: 4px 0; }
+  .needs-results button { text-align: left; white-space: normal; }
+  #needsSearch { width: 100%; }
+  @media (max-width: 560px) {
+    #toolbarStock select { flex: 1 1 45%; min-width: 0; }
+    #toolbarStock button { flex: 1 1 auto; }
+    .stock-row { flex-wrap: wrap; }
+    .seg { width: 100%; }
+    .seg-btn { flex: 1; }
+  }
   @media (max-width: 480px) { .modal { padding: 20px 16px; } }
 </style>
 </head>
@@ -121,7 +182,12 @@
   <div class="divider"></div>
 </header>
 
-<div class="toolbar">
+<nav class="tabs" aria-label="Sections">
+  <button class="tab active" id="tabCocktails" aria-pressed="true">Cocktails</button>
+  <button class="tab" id="tabStock" aria-pressed="false">Bar Stock</button>
+</nav>
+
+<div class="toolbar" id="toolbarCocktails">
   <input type="text" id="searchInput" placeholder="Search by name or ingredient…">
   <select id="categoryFilter"><option value="">All Categories</option></select>
   <select id="statusFilter">
@@ -131,9 +197,29 @@
     <option value="draft">Draft</option>
     <option value="placeholder">Placeholder</option>
   </select>
+  <select id="availFilter" aria-label="Can I make it?">
+    <option value="">Can I make it?</option>
+    <option value="ready">Ready to make</option>
+    <option value="missing">Missing something</option>
+    <option value="unlinked">Not linked yet</option>
+  </select>
   <button class="primary" id="addBtn">+ Add Cocktail</button>
   <button id="syncBtn">↻ Refresh</button>
   <button id="settingsBtn">⚙ GitHub Settings</button>
+</div>
+<div class="toolbar hidden" id="toolbarStock">
+  <input type="text" id="stockSearch" placeholder="Search your bar stock…">
+  <select id="stockCategory"><option value="">All Categories</option></select>
+  <select id="stockShow">
+    <option value="">Show everything</option>
+    <option value="need">Need to buy / make</option>
+    <option value="out">Out only</option>
+    <option value="in">On hand</option>
+  </select>
+  <button class="primary" id="addItemBtn">+ Add Item</button>
+  <button id="shopBtn">🛒 Shopping List</button>
+  <button id="syncBtn2">↻ Refresh</button>
+  <button id="settingsBtn2">⚙ GitHub Settings</button>
 </div>
 <div class="status-bar" id="statusBar"></div>
 
@@ -190,10 +276,21 @@
   ];
 
   var cocktails = [];
-  var currentFilter = { search: "", category: "", status: "" };
+  var currentFilter = { search: "", category: "", status: "", avail: "" };
   var settings = null; // { owner, repo, path, token }
   var currentSha = null; // sha of the file on GitHub, needed for updates
   var isSyncing = false;
+
+  // Bar Stock state
+  var inventory = [];
+  var invSha = null;
+  var invReady = false;
+  var invSyncing = false;
+  var invDirty = false;
+  var invInFlight = false;
+  var invTimer = null;
+  var currentView = "cocktails";
+  var stockFilter = { search: "", category: "", show: "" };
 
   var mainEl = document.getElementById("main");
   var modalRoot = document.getElementById("modalRoot");
@@ -204,6 +301,14 @@
   var syncBtn = document.getElementById("syncBtn");
   var settingsBtn = document.getElementById("settingsBtn");
   var statusBar = document.getElementById("statusBar");
+  var availFilter = document.getElementById("availFilter");
+  var toolbarCocktails = document.getElementById("toolbarCocktails");
+  var toolbarStock = document.getElementById("toolbarStock");
+  var tabCocktails = document.getElementById("tabCocktails");
+  var tabStock = document.getElementById("tabStock");
+  var stockSearch = document.getElementById("stockSearch");
+  var stockCategory = document.getElementById("stockCategory");
+  var stockShow = document.getElementById("stockShow");
 
   CATEGORIES.forEach(function(c) {
     var opt = document.createElement("option");
@@ -288,8 +393,8 @@
     } catch (e) { console.error("local cache save failed", e); }
   }
 
-  function githubUrl() {
-    return "https://api.github.com/repos/" + encodeURIComponent(settings.owner) + "/" + encodeURIComponent(settings.repo) + "/contents/" + settings.path.split("/").map(encodeURIComponent).join("/");
+  function githubUrl(path) {
+    return "https://api.github.com/repos/" + encodeURIComponent(settings.owner) + "/" + encodeURIComponent(settings.repo) + "/contents/" + (path || settings.path).split("/").map(encodeURIComponent).join("/");
   }
   function githubHeaders() {
     return {
@@ -409,9 +514,806 @@
     });
   }
 
-  // ---------- Rendering ----------
+  // ======================================================================
+  // BAR STOCK — data, matching, sync
+  // ======================================================================
+
+  // ======================================================================
+  // BAR STOCK — data, recipe matching, availability, sync
+  // ======================================================================
+
+  var INV_CACHE_KEY = "speakeasy_ledger_inventory_cache_v1";
+  var INV_CATEGORIES = [
+    "Whiskey", "Other Spirits", "Liqueurs, Vermouth & Amari", "Bitters & Fat Washes",
+    "Syrups & Sweeteners", "House-Made", "Juices, Fruit & Mixers", "Dairy, Egg & Foam",
+    "Pantry & Specialty", "Garnishes & Extras"
+  ];
+  var STOCK_LABELS = {
+    bought: { "in": "In", "low": "Low", "out": "Out" },
+    made: { "in": "Made", "low": "Low", "out": "Need" }
+  };
+
+  // [id, name, category, kind, aliases ("|" separated), flags ("g" generic, "m" minor), notes]
+  var SEED_ITEM_ROWS = [
+    // Whiskey
+    ["bourbon", "Bourbon (everyday)", "Whiskey", "bought", "bourbon", "g", ""],
+    ["bourbon-high-proof", "Bourbon, high-proof (100+)", "Whiskey", "bought", "high proof|100+ proof|100 proof", "", ""],
+    ["wheated-bourbon", "Wheated bourbon", "Whiskey", "bought", "wheated|maker's mark|makers mark", "", ""],
+    ["middle-west-wheat", "Middle West Cask Strength Wheat Whiskey", "Whiskey", "bought", "middle west|cask strength wheat|wheat whiskey", "", ""],
+    ["jackson-purchase", "Jackson Purchase Full Proof bourbon", "Whiskey", "bought", "jackson purchase", "", ""],
+    ["knob-creek-smoked-maple", "Knob Creek Smoked Maple bourbon", "Whiskey", "bought", "knob creek|smoked maple", "", ""],
+    ["rye", "Rye whiskey", "Whiskey", "bought", "rye|rye whiskey", "g", ""],
+    // Other spirits
+    ["cognac", "Cognac (or brandy)", "Other Spirits", "bought", "cognac|brandy", "", ""],
+    ["rhum-agricole", "Rhum agricole", "Other Spirits", "bought", "rhum agricole|agricole", "", ""],
+    ["dark-rum", "Dark rum", "Other Spirits", "bought", "dark rum", "g", ""],
+    ["dark-rum-50", "Dark rum, 50% ABV", "Other Spirits", "bought", "50% abv|dark rum 50%", "", "Used in The Siren's Call"],
+    ["jamaican-rum", "Jamaican rum (Jonah's Curse)", "Other Spirits", "bought", "jamaican rum|jonah's curse|jonahs curse", "", ""],
+    ["gold-demerara-rum", "Gold Demerara rum", "Other Spirits", "bought", "demerara rum|gold demerara|gold rum", "", ""],
+    ["white-rum", "White rum", "Other Spirits", "bought", "white rum|silver rum", "", ""],
+    ["gin", "Gin (London Dry)", "Other Spirits", "bought", "gin", "", ""],
+    ["blanco-tequila", "Blanco tequila", "Other Spirits", "bought", "blanco tequila|tequila|blanco", "", ""],
+    ["mezcal", "Mezcal", "Other Spirits", "bought", "mezcal", "", ""],
+    ["vodka", "Vodka", "Other Spirits", "bought", "vodka|tito's|titos", "", ""],
+    ["peated-scotch", "Peated Scotch (optional variation)", "Other Spirits", "bought", "scotch|peated|laphroaig", "", ""],
+    // Liqueurs, vermouth & amari
+    ["green-chartreuse", "Green Chartreuse", "Liqueurs, Vermouth & Amari", "bought", "chartreuse", "", ""],
+    ["banana-liqueur", "Banana liqueur", "Liqueurs, Vermouth & Amari", "bought", "banana liqueur|creme de banane|banane|giffard", "", ""],
+    ["nocino", "Nocino (walnut liqueur)", "Liqueurs, Vermouth & Amari", "bought", "nocino|walnut liqueur", "", ""],
+    ["campari", "Campari", "Liqueurs, Vermouth & Amari", "bought", "campari", "", ""],
+    ["sweet-vermouth", "Sweet vermouth", "Liqueurs, Vermouth & Amari", "bought", "sweet vermouth|rosso vermouth|vermouth", "g", ""],
+    ["punt-e-mes", "Punt e Mes (sweet vermouth)", "Liqueurs, Vermouth & Amari", "bought", "punt e mes", "", ""],
+    ["dolin-blanc", "Dolin Blanc vermouth", "Liqueurs, Vermouth & Amari", "bought", "dolin|blanc vermouth", "", ""],
+    ["aperol", "Aperol", "Liqueurs, Vermouth & Amari", "bought", "aperol", "", ""],
+    ["fernet", "Fernet-Branca", "Liqueurs, Vermouth & Amari", "bought", "fernet|fernet branca", "", ""],
+    ["meletti", "Meletti amaro", "Liqueurs, Vermouth & Amari", "bought", "meletti", "", ""],
+    ["amaretto", "Lazzaroni amaretto", "Liqueurs, Vermouth & Amari", "bought", "amaretto|lazzaroni", "", ""],
+    ["benedictine", "Bénédictine", "Liqueurs, Vermouth & Amari", "bought", "benedictine", "", ""],
+    ["b-and-b", "B&B liqueur", "Liqueurs, Vermouth & Amari", "bought", "b&b|b & b|b and b", "", ""],
+    ["absinthe", "Absinthe", "Liqueurs, Vermouth & Amari", "bought", "absinthe", "", ""],
+    ["lillet", "Lillet Blanc", "Liqueurs, Vermouth & Amari", "bought", "lillet", "", ""],
+    ["raspberry-liqueur", "Raspberry liqueur (optional)", "Liqueurs, Vermouth & Amari", "bought", "raspberry liqueur|chambord", "", ""],
+    ["fino-sherry", "Fino sherry (optional)", "Liqueurs, Vermouth & Amari", "bought", "fino|sherry", "", ""],
+    // Bitters & fat washes
+    ["angostura", "Angostura bitters", "Bitters & Fat Washes", "bought", "angostura|aromatic bitters", "", ""],
+    ["orange-bitters", "Orange bitters", "Bitters & Fat Washes", "bought", "orange bitters", "", ""],
+    ["walnut-bitters", "Black walnut bitters", "Bitters & Fat Washes", "bought", "black walnut bitters|walnut bitters", "", ""],
+    ["chocolate-bitters", "Chocolate bitters", "Bitters & Fat Washes", "bought", "chocolate bitters", "", ""],
+    ["xocolatl-bitters", "Bittermens Xocolatl mole bitters", "Bitters & Fat Washes", "bought", "xocolatl|mole bitters|bittermens", "", ""],
+    ["fatwash-butter", "Fee Brothers Browned Butter fat wash", "Bitters & Fat Washes", "bought", "browned butter", "", ""],
+    ["fatwash-duck", "Fee Brothers Roasted Duck fat wash", "Bitters & Fat Washes", "bought", "roasted duck|duck fat", "", ""],
+    ["fatwash-bacon", "Fee Brothers Bacon fat wash", "Bitters & Fat Washes", "bought", "bacon fat|bacon", "", ""],
+    // Syrups & sweeteners (bought)
+    ["maple-syrup", "Maple syrup (real, dark)", "Syrups & Sweeteners", "bought", "maple syrup", "", ""],
+    ["passion-fruit-syrup", "Passion fruit syrup", "Syrups & Sweeteners", "bought", "passion fruit syrup|passion fruit", "", ""],
+    ["orgeat", "Orgeat", "Syrups & Sweeteners", "bought", "orgeat", "", ""],
+    ["coconut-syrup", "Coconut syrup", "Syrups & Sweeteners", "bought", "coconut syrup", "", ""],
+    // House-made
+    ["magic-syrup", "Magic Syrup", "House-Made", "made", "magic syrup", "", "Brown sugar, toasted coconut, butterscotch + vanilla extract"],
+    ["demerara-syrup", "Demerara syrup", "House-Made", "made", "demerara syrup", "", ""],
+    ["honey-mix", "Honey mix", "House-Made", "made", "honey mix|honey syrup", "", ""],
+    ["honey-pineapple-syrup", "Honey-pineapple syrup", "House-Made", "made", "honey pineapple syrup", "", "Keeps about 1 week"],
+    ["lemon-simple-syrup", "Lemon simple syrup", "House-Made", "made", "lemon simple syrup", "", "Keeps about 2 weeks"],
+    ["carrot-turmeric-syrup", "Carrot-turmeric syrup", "House-Made", "made", "carrot turmeric syrup", "", "Keeps 1-2 weeks"],
+    ["hibiscus-syrup", "Hibiscus syrup", "House-Made", "made", "hibiscus syrup", "", ""],
+    ["agave-syrup", "Agave syrup (1:1)", "House-Made", "made", "agave syrup|agave", "", "Equal parts agave nectar and warm water"],
+    ["fig-syrup", "Fig syrup", "House-Made", "made", "fig syrup", "", ""],
+    ["simple-syrup", "Simple syrup (1:1)", "House-Made", "made", "simple syrup", "", ""],
+    ["house-amaro-mix", "House Amaro Mix", "House-Made", "made", "house amaro mix|amaro mix", "", "Equal parts Amaro Montenegro + Averna (or Ramazzotti)"],
+    ["crunch-infusion", "Cap'n Crunch-infused whiskey", "House-Made", "made", "cap'n crunch infused|crunch infused|infused whiskey|cap'n crunch infusion", "", "3 cups Old Grand-Dad bonded + 1 cup Rittenhouse rye + 2 cups cereal, 24 hrs max"],
+    ["saline", "Saline solution (10:1)", "House-Made", "made", "saline|saline solution", "m", "10 parts water : 1 part salt"],
+    ["pj-vinegar", "Pineapple-jalapeño vinegar", "House-Made", "made", "pineapple jalapeno vinegar|jalapeno vinegar|pineapple vinegar", "", "Homemade or store-bought"],
+    // Juices, fruit & mixers
+    ["limes", "Limes", "Juices, Fruit & Mixers", "bought", "lime|limes|lime juice|lime wheel|lime wheels|lime wedge|lime wedges", "", ""],
+    ["lemons", "Lemons", "Juices, Fruit & Mixers", "bought", "lemon|lemons|lemon juice|lemon peel|lemon twist|lemon wheel", "", ""],
+    ["oranges", "Oranges", "Juices, Fruit & Mixers", "bought", "orange|oranges|orange peel|orange twist|orange wheel|orange wheels|orange sail", "", ""],
+    ["grapefruit", "Grapefruit (white)", "Juices, Fruit & Mixers", "bought", "grapefruit|grapefruit juice|white grapefruit juice", "", ""],
+    ["grapefruit-soda", "Grapefruit soda (Squirt)", "Juices, Fruit & Mixers", "bought", "grapefruit soda|squirt", "", ""],
+    ["pineapple-juice", "Pineapple juice", "Juices, Fruit & Mixers", "bought", "pineapple juice", "", ""],
+    ["tangerine-juice", "Tangerine / clementine juice", "Juices, Fruit & Mixers", "bought", "tangerine|clementine", "", ""],
+    ["club-soda", "Club soda / soda water", "Juices, Fruit & Mixers", "bought", "club soda|soda water|sparkling water|soda", "", ""],
+    ["coconut-water", "Coconut water", "Juices, Fruit & Mixers", "bought", "coconut water", "", ""],
+    ["raspberries", "Fresh raspberries", "Juices, Fruit & Mixers", "bought", "raspberries|raspberry", "", ""],
+    ["jalapenos", "Jalapeños (fresh)", "Juices, Fruit & Mixers", "bought", "jalapeno|jalapenos|jalapeno slices", "", ""],
+    // Dairy, egg & foam
+    ["coconut-cream", "Coconut cream (canned)", "Dairy, Egg & Foam", "bought", "coconut cream", "", ""],
+    ["eggs", "Whole eggs", "Dairy, Egg & Foam", "bought", "whole egg|whole eggs|egg", "", ""],
+    ["foam-agent", "Foam agent (egg white / aquafaba / Fee Foam)", "Dairy, Egg & Foam", "bought", "egg white|egg whites|aquafaba|fee foam|foam", "", ""],
+    // Pantry & specialty
+    ["pickled-ginger-brine", "Pickled ginger brine", "Pantry & Specialty", "bought", "pickled ginger brine|ginger brine", "", ""],
+    ["wood-chips", "Smoker wood chips (applewood / cherry)", "Pantry & Specialty", "bought", "smoke dome|applewood|cherry wood|wood chips|tableside smoke|smoke", "", ""],
+    // Garnishes & extras (minor: never block "ready to make")
+    ["banana-chips", "Banana chips", "Garnishes & Extras", "bought", "banana chip|banana chips", "m", ""],
+    ["nutmeg", "Nutmeg (whole)", "Garnishes & Extras", "bought", "nutmeg", "m", ""],
+    ["cocktail-cherries", "Cocktail / Luxardo cherries", "Garnishes & Extras", "bought", "cocktail cherry|cocktail cherries|luxardo|luxardo cherry|cherry|cherries", "m", ""],
+    ["mint", "Fresh mint", "Garnishes & Extras", "bought", "mint|mint sprig|mint sprigs", "m", ""],
+    ["dark-chocolate", "Dark chocolate (for grating)", "Garnishes & Extras", "bought", "dark chocolate|grated chocolate", "m", ""],
+    ["sea-salt", "Flaky sea salt", "Garnishes & Extras", "bought", "sea salt|flaky salt|flaky sea salt|pinch of salt|salt", "m", ""],
+    ["coconut-flakes", "Toasted coconut flakes", "Garnishes & Extras", "bought", "coconut flakes", "m", ""],
+    ["edible-flowers", "Edible flowers", "Garnishes & Extras", "bought", "edible flower|edible flowers", "m", ""],
+    ["graham-crackers", "Graham crackers", "Garnishes & Extras", "bought", "graham cracker|graham crackers", "m", ""],
+    ["marshmallows", "Marshmallows", "Garnishes & Extras", "bought", "marshmallow|marshmallows", "m", ""],
+    ["blackberries", "Blackberries", "Garnishes & Extras", "bought", "blackberry|blackberries", "m", ""],
+    ["pineapple-wedge", "Fresh pineapple (wedges)", "Garnishes & Extras", "bought", "pineapple wedge|pineapple wedges|fresh pineapple", "m", ""],
+    ["figs", "Figs (fresh or dried slices)", "Garnishes & Extras", "bought", "fig quarter|fig slice|fresh fig|dried fig|figs|fig", "m", ""],
+    ["tajin", "Tajín / chile-lime salt", "Garnishes & Extras", "bought", "tajin|chile lime salt|chili lime salt|chile lime rim|chili lime rim", "m", ""],
+    ["origami-crane", "Origami crane (garnish)", "Garnishes & Extras", "bought", "origami crane", "m", ""],
+    ["crunch-cereal", "Cap'n Crunch cereal (garnish)", "Garnishes & Extras", "bought", "cap'n crunch cereal|crunch cereal|cereal", "m", ""]
+  ];
+
+  function buildSeedInventory() {
+    return SEED_ITEM_ROWS.map(function(r) {
+      return {
+        id: r[0], name: r[1], category: r[2], kind: r[3], status: "out",
+        aliases: r[4] ? r[4].split("|") : [],
+        generic: r[5].indexOf("g") >= 0, minor: r[5].indexOf("m") >= 0, notes: r[6] || ""
+      };
+    });
+  }
+  function normalizeItem(it) {
+    return {
+      id: String(it.id || slugify(it.name)),
+      name: String(it.name || "Unnamed item"),
+      category: it.category || "Pantry & Specialty",
+      kind: it.kind === "made" ? "made" : "bought",
+      status: (it.status === "in" || it.status === "low") ? it.status : "out",
+      aliases: Array.isArray(it.aliases) ? it.aliases.filter(Boolean) : [],
+      generic: !!it.generic, minor: !!it.minor, notes: it.notes || ""
+    };
+  }
+  function shortName(it) { return String(it.name).replace(/\s*\([^)]*\)/g, "").trim() || it.name; }
+
+  // ---------- Recipe-line matching ----------
+
+  function normText(s) {
+    var t = String(s || "");
+    try { t = t.normalize("NFD").replace(/[̀-ͯ]/g, ""); } catch (e) {}
+    t = t.toLowerCase().replace(/[‘’ʼ]/g, "'").replace(/[^a-z0-9&'+%]+/g, " ").replace(/\s+/g, " ").trim();
+    return " " + t + " ";
+  }
+  function aliasListFor(it) {
+    var list = [];
+    (it.aliases || []).forEach(function(a) { var n = normText(a); if (n.trim()) list.push(n); });
+    var nm = normText(String(it.name || "").replace(/\([^)]*\)/g, " "));
+    if (nm.trim()) list.push(nm);
+    return list;
+  }
+  var aliasCache = null, itemMapCache = null;
+  function invChanged() { aliasCache = null; itemMapCache = null; }
+  function getItemMap() {
+    if (!itemMapCache) { itemMapCache = {}; inventory.forEach(function(it) { itemMapCache[it.id] = it; }); }
+    return itemMapCache;
+  }
+  function getAliasEntries() {
+    if (aliasCache) return aliasCache;
+    var entries = [];
+    inventory.forEach(function(it) { aliasListFor(it).forEach(function(a) { entries.push({ item: it, alias: a }); }); });
+    entries.sort(function(x, y) { return y.alias.length - x.alias.length; });
+    aliasCache = entries;
+    return entries;
+  }
+  // Finds items whose aliases appear as whole words; longest aliases claim text first.
+  function findMatches(text) {
+    var found = [];
+    getAliasEntries().forEach(function(e) {
+      var idx = text.indexOf(e.alias);
+      if (idx === -1) return;
+      text = text.slice(0, idx) + new Array(e.alias.length + 1).join(" ") + text.slice(idx + e.alias.length);
+      if (found.indexOf(e.item) === -1) found.push(e.item);
+    });
+    return found;
+  }
+  // One recipe line -> the stock items it needs.
+  function matchLine(line) {
+    if (!line || /\boptional\b/i.test(line)) return [];
+    var inside = (String(line).match(/\([^)]*\)/g) || []).join(" ");
+    var outsideRaw = String(line).replace(/\([^)]*\)/g, " ");
+    var firstAlt = outsideRaw.split(/\s+or\s+/i)[0];      // "bourbon or rye" -> bourbon
+    var out = findMatches(normText(firstAlt));
+    var outSpecific = out.filter(function(it) { return !it.generic; });
+    if (outSpecific.length) return outSpecific;
+    var inn = inside ? findMatches(normText(inside)) : [];
+    // A parenthetical only refines the ingredient when it names the same kind of thing:
+    // "bourbon (high-proof)" -> high-proof bourbon, but "rye (or other 100-proof rye)" stays rye.
+    var inSpecific = inn.filter(function(it) {
+      if (it.generic) return false;
+      if (!out.length) return true;
+      var nameN = normText(it.name);
+      return out.some(function(g) { return aliasListFor(g).some(function(a) { return nameN.indexOf(a) !== -1; }); });
+    });
+    if (inSpecific.length) return [inSpecific[0]];         // "sweet vermouth (Punt e Mes)" -> Punt e Mes
+    if (out.length) return [out[0]];
+    if (inn.length) return [inn[0]];
+    return [];
+  }
+  function suggestFromLines(lines) {
+    var ids = [], unmatched = [];
+    (lines || []).forEach(function(line) {
+      if (!line || /\boptional\b/i.test(line)) return;
+      var m = matchLine(line);
+      if (!m.length) { unmatched.push(line); return; }
+      m.forEach(function(it) { if (ids.indexOf(it.id) === -1) ids.push(it.id); });
+    });
+    return { ids: ids, unmatched: unmatched };
+  }
+
+  // ---------- Availability ----------
+
+  function availability(c) {
+    if (!invReady || !Array.isArray(c.needs) || !c.needs.length) return null;
+    var map = getItemMap();
+    var missing = [], missingMinor = [], low = [];
+    c.needs.forEach(function(id) {
+      var it = map[id];
+      if (!it) return;
+      if (it.status === "out") (it.minor ? missingMinor : missing).push(it);
+      else if (it.status === "low") low.push(it);
+    });
+    return { state: missing.length ? "missing" : (missingMinor.length ? "almost" : "ready"), missing: missing, missingMinor: missingMinor, low: low };
+  }
+  function usedIn(itemId) {
+    return cocktails.filter(function(c) { return Array.isArray(c.needs) && c.needs.indexOf(itemId) !== -1; });
+  }
+  // item id -> number of drinks that would become makeable if only that item were restocked
+  function computeUnlocks() {
+    var map = {};
+    cocktails.forEach(function(c) {
+      var a = availability(c);
+      if (a && a.state === "missing" && a.missing.length === 1) map[a.missing[0].id] = (map[a.missing[0].id] || 0) + 1;
+    });
+    return map;
+  }
+  function namesList(arr, max) {
+    var n = arr.map(shortName);
+    return n.slice(0, max).join(", ") + (n.length > max ? " +" + (n.length - max) + " more" : "");
+  }
+  function availabilityHtml(c) {
+    var a = availability(c);
+    if (!a) return "";
+    if (a.state === "missing") return '<div class="avail missing">✕ Missing: ' + escapeHtml(namesList(a.missing, 3)) + '</div>';
+    var s = '<div class="avail ' + a.state + '">✓ Ready to make';
+    if (a.state === "almost") s += ' <span class="low">(no ' + escapeHtml(namesList(a.missingMinor, 3)) + ')</span>';
+    if (a.low.length) s += ' <span class="low">· running low: ' + escapeHtml(namesList(a.low, 3)) + '</span>';
+    return s + '</div>';
+  }
+  function stockCheckHtml(c) {
+    if (!invReady) return "";
+    var body;
+    if (!Array.isArray(c.needs) || !c.needs.length) {
+      body = '<div style="color:var(--text-faint);font-style:italic;">Not linked to your Bar Stock yet — tap Edit to link ingredients.</div>';
+    } else {
+      var map = getItemMap();
+      var items = c.needs.map(function(id) { return map[id]; }).filter(Boolean);
+      var order = { "out": 0, "low": 1, "in": 2 };
+      items.sort(function(a, b) { return (order[a.status] - order[b.status]) || a.name.localeCompare(b.name); });
+      body = '<ul class="detail-ingredients">' + items.map(function(it) {
+        var sym = it.status === "in" ? "✓" : (it.status === "low" ? "◐" : "✕");
+        var lab = it.status === "in" ? (it.kind === "made" ? "made" : "in stock") : (it.status === "low" ? "running low" : (it.kind === "made" ? "need to make" : "out"));
+        return '<li class="stock-li ' + it.status + '"><span class="sym">' + sym + '</span> ' + escapeHtml(shortName(it)) +
+          (it.minor ? ' <span style="color:var(--text-faint);font-size:13px;">(garnish/extra)</span>' : '') +
+          '<span class="stock-state">' + lab + '</span></li>';
+      }).join("") + '</ul>';
+    }
+    return '<div class="detail-section"><div class="detail-label">Stock Check</div>' + body + '</div>';
+  }
+
+  // ---------- Bar Stock persistence & sync ----------
+
+  function loadInventoryCache() {
+    try {
+      var raw = window.localStorage.getItem(INV_CACHE_KEY);
+      if (raw) { var p = JSON.parse(raw); if (p && Array.isArray(p.items)) return p; }
+    } catch (e) {}
+    return null;
+  }
+  function saveInventoryCache() {
+    try { window.localStorage.setItem(INV_CACHE_KEY, JSON.stringify({ items: inventory, sha: invSha })); }
+    catch (e) { console.error("inventory cache save failed", e); }
+  }
+  function inventoryPath() {
+    return String((settings && settings.path) || "cocktails.json").replace(/[^\/]*$/, "") + "inventory.json";
+  }
+  function useSeedInventory() {
+    inventory = buildSeedInventory(); invChanged();
+  }
+
+  function fetchInventory() {
+    if (!settings) return Promise.resolve(false);
+    invSyncing = true;
+    return fetch(githubUrl(inventoryPath()), { headers: githubHeaders() }).then(function(resp) {
+      if (resp.status === 404) return createInventoryFile();
+      if (!resp.ok) {
+        return resp.json().catch(function() { return {}; }).then(function(body) {
+          throw new Error("GitHub error " + resp.status + (body && body.message ? ": " + body.message : ""));
+        });
+      }
+      return resp.json().then(function(body) {
+        invSha = body.sha;
+        var parsed = JSON.parse(base64ToUtf8(body.content));
+        var items = Array.isArray(parsed) ? parsed : (parsed && parsed.items);
+        if (!Array.isArray(items)) throw new Error("Bar Stock file didn't contain a valid list");
+        inventory = items.map(normalizeItem); invChanged();
+        invReady = true;
+        saveInventoryCache();
+        return true;
+      });
+    }).catch(function(err) {
+      console.error("fetch inventory failed", err);
+      var cached = loadInventoryCache();
+      if (cached) {
+        inventory = cached.items.map(normalizeItem); invChanged();
+        invSha = cached.sha; invReady = true;
+        setStatus("Couldn't reach GitHub for Bar Stock (" + err.message + ") — showing the last saved copy from this device.", "error");
+      } else {
+        setStatus("Couldn't load Bar Stock from GitHub (" + err.message + "). Check GitHub Settings, then tap Refresh.", "error");
+      }
+      return false;
+    }).finally(function() {
+      invSyncing = false;
+      render();
+    });
+  }
+  function createInventoryFile() {
+    useSeedInventory();
+    var content = utf8ToBase64(JSON.stringify({ version: 1, items: inventory }, null, 2));
+    return fetch(githubUrl(inventoryPath()), {
+      method: "PUT",
+      headers: Object.assign({ "Content-Type": "application/json" }, githubHeaders()),
+      body: JSON.stringify({ message: "Initialize bar stock", content: content })
+    }).then(function(resp) {
+      if (!resp.ok) {
+        return resp.json().catch(function() { return {}; }).then(function(body) {
+          throw new Error("Couldn't create the Bar Stock file: " + resp.status + (body && body.message ? " " + body.message : ""));
+        });
+      }
+      return resp.json();
+    }).then(function(body) {
+      invSha = body.content.sha; invReady = true;
+      saveInventoryCache();
+      setStatus("Created your Bar Stock list on GitHub. Tap what you have on the shelf.", "ok");
+      return true;
+    });
+  }
+  function putInventory(retrying) {
+    var content = utf8ToBase64(JSON.stringify({ version: 1, items: inventory }, null, 2));
+    var payload = { message: "Update bar stock", content: content };
+    if (invSha) payload.sha = invSha;
+    return fetch(githubUrl(inventoryPath()), {
+      method: "PUT",
+      headers: Object.assign({ "Content-Type": "application/json" }, githubHeaders()),
+      body: JSON.stringify(payload)
+    }).then(function(resp) {
+      if ((resp.status === 409 || resp.status === 422) && !retrying) {
+        return fetch(githubUrl(inventoryPath()), { headers: githubHeaders() }).then(function(r2) {
+          return r2.ok ? r2.json() : { sha: null };
+        }).then(function(b2) { invSha = b2.sha || null; return putInventory(true); });
+      }
+      if (!resp.ok) {
+        return resp.json().catch(function() { return {}; }).then(function(body) {
+          throw new Error("GitHub error " + resp.status + (body && body.message ? ": " + body.message : ""));
+        });
+      }
+      return resp.json().then(function(body) {
+        invSha = body.content.sha;
+        saveInventoryCache();
+        setStatus("Saved Bar Stock to GitHub.", "ok");
+        return true;
+      });
+    }).catch(function(err) {
+      console.error("push inventory failed", err);
+      saveInventoryCache();
+      setStatus("Couldn't save Bar Stock to GitHub (" + err.message + ") — kept on this device only for now. Your next change will try saving again.", "error");
+      return false;
+    });
+  }
+  // Taps are batched and sent one at a time so rapid toggling never races on the file's sha.
+  function scheduleInventoryPush() {
+    saveInventoryCache();
+    if (!settings) { setStatus("Not connected to GitHub — Bar Stock changes are only saved on this device.", "error"); return; }
+    invDirty = true;
+    if (invTimer) clearTimeout(invTimer);
+    setStatus("Saving Bar Stock…");
+    invTimer = setTimeout(runInventoryPush, 600);
+  }
+  function runInventoryPush() {
+    invTimer = null;
+    if (invInFlight || !invDirty) return;
+    invInFlight = true; invDirty = false;
+    putInventory(false).then(function() {
+      invInFlight = false;
+      if (invDirty) runInventoryPush();
+    });
+  }
+
+  function refreshAll() {
+    isSyncing = true; invSyncing = true;
+    render();
+    fetchFromGitHub();
+    fetchInventory();
+  }
+
+  // ======================================================================
+  // BAR STOCK — views, modals, linking
+  // ======================================================================
 
   function render() {
+    if (currentView === "stock") renderStock(); else renderCocktails();
+  }
+
+  function setView(v, userInitiated) {
+    currentView = (v === "stock") ? "stock" : "cocktails";
+    toolbarCocktails.classList.toggle("hidden", currentView !== "cocktails");
+    toolbarStock.classList.toggle("hidden", currentView !== "stock");
+    tabCocktails.classList.toggle("active", currentView === "cocktails");
+    tabStock.classList.toggle("active", currentView === "stock");
+    tabCocktails.setAttribute("aria-pressed", currentView === "cocktails" ? "true" : "false");
+    tabStock.setAttribute("aria-pressed", currentView === "stock" ? "true" : "false");
+    try { history.replaceState(null, "", currentView === "stock" ? "#stock" : "#cocktails"); } catch (e) {}
+    if (userInitiated) window.scrollTo(0, 0);
+    render();
+  }
+
+  // ---------- Cocktail page helpers ----------
+
+  function buildCocktailBanners() {
+    if (!invReady || !cocktails.length) return "";
+    var html = "";
+    var haveStock = inventory.some(function(i) { return i.status !== "out"; });
+    var unlinked = cocktails.filter(function(c) { return !Array.isArray(c.needs); }).length;
+    if (!haveStock) {
+      html += '<div class="banner"><span>Your Bar Stock is empty, so no drink can show as ready yet. Tell the ledger what is on your shelf.</span>' +
+        '<button class="primary" data-act="gostock">Set up Bar Stock</button></div>';
+    }
+    if (unlinked) {
+      html += '<div class="banner"><span><b>' + unlinked + '</b> cocktail' + (unlinked === 1 ? " isn't" : "s aren't") +
+        ' linked to your ingredients yet, so ' + (unlinked === 1 ? "it" : "they") + " can't show whether you can make " + (unlinked === 1 ? "it" : "them") + '.</span>' +
+        '<button class="primary" data-act="autolink">Auto-link from recipes</button></div>';
+    }
+    return html;
+  }
+
+  function autoLinkAll() {
+    var n = 0;
+    cocktails.forEach(function(c) {
+      if (Array.isArray(c.needs)) return;
+      c.needs = suggestFromLines(c.ingredients || []).ids;
+      n++;
+    });
+    if (!n) return;
+    render();
+    setStatus("Linking " + n + " cocktail" + (n === 1 ? "" : "s") + " to your Bar Stock…");
+    pushToGitHub().then(function(ok) {
+      if (ok) setStatus("Linked " + n + " cocktail" + (n === 1 ? "" : "s") + " to your ingredients. Open any drink and tap Edit to fine-tune its links.", "ok");
+    });
+  }
+
+  // ---------- Bar Stock page ----------
+
+  function stockVisible(it) {
+    if (stockFilter.category && it.category !== stockFilter.category) return false;
+    if (stockFilter.show === "need" && it.status === "in") return false;
+    if (stockFilter.show === "out" && it.status !== "out") return false;
+    if (stockFilter.show === "in" && it.status === "out") return false;
+    if (stockFilter.search) {
+      var q = normText(stockFilter.search).trim();
+      var hay = normText(it.name + " " + (it.aliases || []).join(" ") + " " + (it.notes || ""));
+      if (hay.indexOf(q) === -1) return false;
+    }
+    return true;
+  }
+
+  function renderStock() {
+    if (invSyncing && !invReady) { mainEl.innerHTML = '<div class="loading-msg">Counting the bottles…</div>'; return; }
+    if (!invReady) {
+      mainEl.innerHTML = '<div class="empty-state">Bar Stock couldn\'t be loaded. Check GitHub Settings, then tap Refresh.</div>';
+      return;
+    }
+    var y = window.pageYOffset || 0;
+    var nIn = 0, nLow = 0, nOut = 0;
+    inventory.forEach(function(i) { if (i.status === "in") nIn++; else if (i.status === "low") nLow++; else nOut++; });
+    var linked = cocktails.filter(function(c) { return availability(c); });
+    var ready = linked.filter(function(c) { return availability(c).state !== "missing"; }).length;
+    var unlocks = computeUnlocks();
+
+    var html = '<div class="stock-summary">' + nIn + ' in stock · ' + nLow + ' low · ' + nOut + ' out' +
+      (linked.length ? ' · <b>' + ready + ' of ' + linked.length + '</b> linked drinks ready to make' : '') + '</div>';
+    if (nIn + nLow === 0) {
+      html += '<div class="banner"><span>Nothing is marked as in stock yet. Tap <b>In</b> on what you have, or use <b>Mark all in</b> on a category and then flip the few you\'re out of.</span></div>';
+    }
+
+    var visible = inventory.filter(stockVisible);
+    if (!visible.length) {
+      mainEl.innerHTML = html + '<div class="empty-state">Nothing matches that search or filter.</div>';
+      return;
+    }
+    var byCat = {};
+    visible.forEach(function(it) { (byCat[it.category] = byCat[it.category] || []).push(it); });
+    var order = INV_CATEGORIES.concat(Object.keys(byCat).filter(function(c) { return INV_CATEGORIES.indexOf(c) === -1; }));
+
+    order.forEach(function(cat) {
+      var items = byCat[cat];
+      if (!items || !items.length) return;
+      items.sort(function(a, b) { return a.name.localeCompare(b.name); });
+      var all = inventory.filter(function(i) { return i.category === cat; });
+      var inCount = all.filter(function(i) { return i.status !== "out"; }).length;
+      var anyNotIn = items.some(function(i) { return i.status !== "in"; });
+      html += '<div class="category-group">';
+      html += '<div class="category-title"><span>' + escapeHtml(cat) + ' <span class="category-count">' + inCount + ' of ' + all.length + ' on hand</span></span>' +
+        (anyNotIn ? '<button class="ghost" data-act="markgroup" data-cat="' + escapeHtml(cat) + '">Mark all in</button>' : '') + '</div>';
+      items.forEach(function(it) {
+        var used = usedIn(it.id).length;
+        var meta = [];
+        if (used) meta.push('in ' + used + (used === 1 ? ' drink' : ' drinks'));
+        if (it.status === "out" && unlocks[it.id]) meta.push('<span class="unlock">unlocks ' + unlocks[it.id] + (unlocks[it.id] === 1 ? ' drink' : ' drinks') + '</span>');
+        if (it.notes) meta.push(escapeHtml(it.notes));
+        html += '<div class="stock-row ' + it.status + '">' +
+          '<div class="stock-main" data-act="edititem" data-id="' + escapeHtml(it.id) + '">' +
+            '<div class="stock-name">' + escapeHtml(it.name) + (it.minor ? ' <span class="tag">garnish/extra</span>' : '') + '</div>' +
+            (meta.length ? '<div class="stock-meta">' + meta.join(' · ') + '</div>' : '') +
+          '</div>' +
+          '<div class="seg">' + ["in", "low", "out"].map(function(st) {
+            return '<button type="button" class="seg-btn ' + st + (it.status === st ? ' active' : '') + '" data-act="setstatus" data-id="' + escapeHtml(it.id) +
+              '" data-st="' + st + '" aria-pressed="' + (it.status === st ? "true" : "false") + '">' + STOCK_LABELS[it.kind][st] + '</button>';
+          }).join("") + '</div>' +
+        '</div>';
+      });
+      html += '</div>';
+    });
+    mainEl.innerHTML = html;
+    window.scrollTo(0, y);
+  }
+
+  function setItemStatus(id, st) {
+    var it = getItemMap()[id];
+    if (!it || it.status === st) return;
+    it.status = st;
+    render();
+    scheduleInventoryPush();
+  }
+  function markGroupIn(cat) {
+    var n = 0;
+    inventory.filter(function(i) { return i.category === cat && stockVisible(i); }).forEach(function(i) {
+      if (i.status !== "in") { i.status = "in"; n++; }
+    });
+    if (!n) return;
+    render();
+    scheduleInventoryPush();
+  }
+  function createItemQuick(name) {
+    var it = normalizeItem({ id: slugify(name), name: name, category: "Pantry & Specialty", kind: "bought", status: "out", aliases: [name] });
+    inventory.push(it);
+    invChanged();
+    scheduleInventoryPush();
+    return it;
+  }
+
+  // ---------- Item editor ----------
+
+  function openItemModal(existing) {
+    var isNew = !existing;
+    var it = existing || { name: "", category: stockFilter.category || INV_CATEGORIES[0], kind: "bought", status: "out", aliases: [], minor: false, notes: "" };
+    var cats = INV_CATEGORIES.slice();
+    if (cats.indexOf(it.category) === -1) cats.push(it.category);
+    var catOptions = cats.map(function(c) { return '<option value="' + escapeHtml(c) + '"' + (it.category === c ? " selected" : "") + '>' + escapeHtml(c) + '</option>'; }).join("");
+    var usedHtml = "";
+    if (!isNew) {
+      var used = usedIn(it.id);
+      usedHtml = '<div class="field"><label>Used in</label>' + (used.length ?
+        '<ul class="detail-ingredients">' + used.map(function(c) {
+          var a = availability(c);
+          var tag = a ? (a.state === "missing" ? '<span class="stock-state" style="color:var(--bad)">missing something</span>' : '<span class="stock-state" style="color:var(--ok)">ready</span>') : '';
+          return '<li>' + escapeHtml(c.name) + tag + '</li>';
+        }).join("") + '</ul>' :
+        '<div class="hint">No cocktails use this yet. Link it from a cocktail\'s Edit screen, or use Auto-link from recipes.</div>') + '</div>';
+    }
+    modalRoot.innerHTML =
+      '<div class="modal-overlay" id="overlay"><div class="modal">' +
+        '<div class="modal-close-row"><button class="ghost" id="closeBtn">✕ Close</button></div>' +
+        '<h2>' + (isNew ? "Add Item" : "Edit Item") + '</h2>' +
+        '<div class="field"><label>Name</label><input type="text" id="i_name" value="' + escapeHtml(it.name) + '" placeholder="e.g. Cynar"></div>' +
+        '<div class="field"><label>Category</label><select id="i_cat">' + catOptions + '</select></div>' +
+        '<div class="field"><label>Type</label><select id="i_kind"><option value="bought"' + (it.kind === "bought" ? " selected" : "") + '>Bought</option><option value="made"' + (it.kind === "made" ? " selected" : "") + '>House-made (syrups, infusions)</option></select></div>' +
+        '<div class="field"><label>Status</label><select id="i_status"><option value="in"' + (it.status === "in" ? " selected" : "") + '>In stock</option><option value="low"' + (it.status === "low" ? " selected" : "") + '>Running low</option><option value="out"' + (it.status === "out" ? " selected" : "") + '>Out / need</option></select></div>' +
+        '<div class="field"><label>Notes</label><input type="text" id="i_notes" value="' + escapeHtml(it.notes || "") + '" placeholder="Brand, size, how it\'s made…"></div>' +
+        '<div class="field"><label>Also recognized as</label><input type="text" id="i_aliases" value="' + escapeHtml((it.aliases || []).join(", ")) + '" placeholder="comma-separated, e.g. cynar, artichoke amaro"><div class="hint">Words in a recipe that mean this item. Used when linking recipes automatically.</div></div>' +
+        '<div class="field"><label style="display:flex;align-items:center;gap:8px;text-transform:none;letter-spacing:0;font-size:15px;"><input type="checkbox" id="i_minor"' + (it.minor ? " checked" : "") + ' style="width:auto;"> Garnish or extra — missing it won\'t stop a drink from showing as ready</label></div>' +
+        usedHtml +
+        '<div class="modal-actions"><div class="left">' + (isNew ? '' : '<button class="danger" id="deleteItemBtn">Delete</button>') + '</div><button class="primary" id="saveItemBtn">Save</button></div>' +
+      '</div></div>';
+    document.getElementById("closeBtn").addEventListener("click", closeModal);
+    document.getElementById("overlay").addEventListener("click", function(e) { if (e.target.id === "overlay") closeModal(); });
+    document.getElementById("saveItemBtn").addEventListener("click", function() {
+      var name = document.getElementById("i_name").value.trim();
+      if (!name) { alert("Please give the item a name."); return; }
+      var fields = {
+        name: name,
+        category: document.getElementById("i_cat").value,
+        kind: document.getElementById("i_kind").value,
+        status: document.getElementById("i_status").value,
+        notes: document.getElementById("i_notes").value.trim(),
+        aliases: document.getElementById("i_aliases").value.split(",").map(function(s) { return s.trim(); }).filter(Boolean),
+        minor: document.getElementById("i_minor").checked
+      };
+      if (isNew) {
+        inventory.push(normalizeItem(Object.assign({ id: slugify(name) }, fields)));
+      } else {
+        Object.keys(fields).forEach(function(k) { it[k] = fields[k]; });
+      }
+      invChanged();
+      closeModal();
+      render();
+      scheduleInventoryPush();
+    });
+    var delBtn = document.getElementById("deleteItemBtn");
+    if (delBtn) delBtn.addEventListener("click", function() {
+      var used = usedIn(it.id);
+      if (!confirm('Delete "' + it.name + '" from Bar Stock?' + (used.length ? " It will be unlinked from " + used.length + " cocktail" + (used.length === 1 ? "" : "s") + "." : ""))) return;
+      inventory = inventory.filter(function(x) { return x.id !== it.id; });
+      var changed = false;
+      cocktails.forEach(function(c) {
+        if (Array.isArray(c.needs) && c.needs.indexOf(it.id) !== -1) { c.needs = c.needs.filter(function(id) { return id !== it.id; }); changed = true; }
+      });
+      invChanged();
+      closeModal();
+      render();
+      scheduleInventoryPush();
+      if (changed) pushToGitHub();
+    });
+  }
+
+  // ---------- Shopping list ----------
+
+  function buildShoppingText() {
+    var unl = computeUnlocks();
+    var need = inventory.filter(function(i) { return i.status !== "in"; });
+    if (!need.length) return "";
+    function section(kind, title) {
+      var items = need.filter(function(i) { return i.kind === kind; });
+      if (!items.length) return "";
+      var byCat = {};
+      items.forEach(function(i) { (byCat[i.category] = byCat[i.category] || []).push(i); });
+      var cats = INV_CATEGORIES.concat(Object.keys(byCat).filter(function(c) { return INV_CATEGORIES.indexOf(c) === -1; }));
+      var out = title + "\n";
+      cats.forEach(function(cat) {
+        var arr = byCat[cat];
+        if (!arr) return;
+        arr.sort(function(a, b) { return (unl[b.id] || 0) - (unl[a.id] || 0) || a.name.localeCompare(b.name); });
+        out += "\n" + cat + "\n";
+        arr.forEach(function(i) {
+          out += "- " + shortName(i) + (i.status === "low" ? " (running low)" : "") +
+            (unl[i.id] ? " — unlocks " + unl[i.id] + (unl[i.id] === 1 ? " drink" : " drinks") : "") + "\n";
+        });
+      });
+      return out;
+    }
+    var parts = [section("bought", "TO BUY"), section("made", "TO MAKE")].filter(Boolean);
+    return parts.join("\n");
+  }
+
+  function openShoppingModal() {
+    var text = buildShoppingText();
+    var count = inventory.filter(function(i) { return i.status !== "in"; }).length;
+    modalRoot.innerHTML =
+      '<div class="modal-overlay" id="overlay"><div class="modal">' +
+        '<div class="modal-close-row"><button class="ghost" id="closeBtn">✕ Close</button></div>' +
+        '<h2>Shopping List</h2>' +
+        '<div style="color:var(--text-dim);margin-bottom:12px;">' + (count ? count + ' item' + (count === 1 ? '' : 's') + ' out or running low. Items that would unlock the most drinks are listed first within each category.' : 'Everything is in stock.') + '</div>' +
+        (count ? '<textarea id="shopText" rows="14" readonly style="width:100%;font-size:15px;"></textarea>' : '') +
+        '<div class="modal-actions"><div class="left">' + (count ? '<button class="primary" id="copyListBtn">Copy list</button>' : '') + '</div>' +
+          (count ? '<button id="stockAllBtn">Mark all as stocked</button>' : '') + '</div>' +
+      '</div></div>';
+    if (count) document.getElementById("shopText").value = text;
+    document.getElementById("closeBtn").addEventListener("click", closeModal);
+    document.getElementById("overlay").addEventListener("click", function(e) { if (e.target.id === "overlay") closeModal(); });
+    var copyBtn = document.getElementById("copyListBtn");
+    if (copyBtn) copyBtn.addEventListener("click", function() {
+      var ta = document.getElementById("shopText");
+      function done() { copyBtn.textContent = "Copied ✓"; }
+      function fallback() {
+        ta.focus(); ta.select();
+        try { ta.setSelectionRange(0, ta.value.length); document.execCommand("copy"); done(); } catch (e) { copyBtn.textContent = "Select the text and copy"; }
+      }
+      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(ta.value).then(done, fallback);
+      else fallback();
+    });
+    var allBtn = document.getElementById("stockAllBtn");
+    if (allBtn) allBtn.addEventListener("click", function() {
+      if (!confirm("Mark all " + count + " listed items as in stock? Do this after you've shopped and made your prep items.")) return;
+      inventory.forEach(function(i) { i.status = "in"; });
+      closeModal();
+      render();
+      scheduleInventoryPush();
+    });
+  }
+
+  // ---------- Ingredient picker inside the cocktail editor ----------
+
+  function setupNeedsPicker(c, isExisting, getLines) {
+    var state = {
+      needs: Array.isArray(c.needs) ? c.needs.slice() : (isExisting ? suggestFromLines(c.ingredients || []).ids : []),
+      touched: false
+    };
+    var autoFilled = isExisting && !Array.isArray(c.needs) && state.needs.length > 0;
+    var box = document.getElementById("needsBox");
+    if (!invReady) {
+      box.innerHTML = '<div class="hint">Bar Stock isn\'t loaded yet, so ingredients can\'t be linked right now. Connect to GitHub and tap Refresh.</div>';
+      return { active: false, state: state };
+    }
+    box.innerHTML =
+      '<div class="chips" id="needsChips"></div>' +
+      '<input type="text" id="needsSearch" placeholder="Search Bar Stock to add an ingredient…" autocomplete="off">' +
+      '<div class="needs-results" id="needsResults"></div>' +
+      '<button class="ghost" id="suggestNeedsBtn" type="button">Suggest from the ingredients above</button>' +
+      '<div class="hint" id="needsHint"></div>';
+    var chipsEl = document.getElementById("needsChips");
+    var searchEl = document.getElementById("needsSearch");
+    var resultsEl = document.getElementById("needsResults");
+    var hintEl = document.getElementById("needsHint");
+    if (autoFilled) hintEl.textContent = "Suggested from the recipe — adjust if anything is off.";
+    else if (!isExisting) hintEl.textContent = "Leave this empty and the ledger will link the ingredients above automatically when you save.";
+    else if (Array.isArray(c.needs)) hintEl.textContent = "If you change the ingredient lines above, tap Suggest to pick up new items.";
+
+    function draw() {
+      var map = getItemMap();
+      chipsEl.innerHTML = state.needs.map(function(id) {
+        var it = map[id];
+        if (!it) return "";
+        return '<span class="chip"><span class="status-dot ' + it.status + '"></span>' + escapeHtml(shortName(it)) +
+          '<button type="button" class="ghost" data-rm="' + escapeHtml(id) + '" aria-label="Remove">✕</button></span>';
+      }).join("") || '<span style="color:var(--text-faint);font-style:italic;">Nothing linked yet</span>';
+      var q = normText(searchEl.value).trim();
+      var html = "";
+      if (q) {
+        inventory.filter(function(it) {
+          if (state.needs.indexOf(it.id) !== -1) return false;
+          return normText(it.name + " " + (it.aliases || []).join(" ")).indexOf(q) !== -1;
+        }).slice(0, 8).forEach(function(it) {
+          html += '<button type="button" class="ghost" data-add="' + escapeHtml(it.id) + '"><span class="status-dot ' + it.status + '"></span>+ ' + escapeHtml(shortName(it)) + '</button>';
+        });
+        var exact = inventory.some(function(it) { return normText(it.name).trim() === q; });
+        if (!exact) html += '<button type="button" class="ghost" data-new="1">+ Add “' + escapeHtml(searchEl.value.trim()) + '” to Bar Stock as a new item</button>';
+      }
+      resultsEl.innerHTML = html;
+    }
+    chipsEl.addEventListener("click", function(e) {
+      var b = e.target.closest ? e.target.closest("[data-rm]") : null;
+      if (!b) return;
+      var id = b.getAttribute("data-rm");
+      state.needs = state.needs.filter(function(x) { return x !== id; });
+      state.touched = true;
+      draw();
+    });
+    resultsEl.addEventListener("click", function(e) {
+      var b = e.target.closest ? e.target.closest("button") : null;
+      if (!b) return;
+      if (b.getAttribute("data-add")) {
+        state.needs.push(b.getAttribute("data-add"));
+      } else if (b.getAttribute("data-new")) {
+        var nm = searchEl.value.trim();
+        if (!nm) return;
+        state.needs.push(createItemQuick(nm).id);
+      } else return;
+      state.touched = true;
+      searchEl.value = "";
+      draw();
+    });
+    searchEl.addEventListener("input", draw);
+    document.getElementById("suggestNeedsBtn").addEventListener("click", function() {
+      var r = suggestFromLines(getLines());
+      var added = 0;
+      r.ids.forEach(function(id) { if (state.needs.indexOf(id) === -1) { state.needs.push(id); added++; } });
+      state.touched = true;
+      hintEl.textContent = (added ? "Added " + added + " from the recipe. " : "Nothing new to add from the recipe. ") +
+        (r.unmatched.length ? "No Bar Stock match for: " + r.unmatched.join("; ") + "." : "");
+      draw();
+    });
+    draw();
+    return { active: true, state: state };
+  }
+
+  // ---------- Rendering ----------
+
+  function renderCocktails() {
     if (isSyncing) {
       mainEl.innerHTML = '<div class="loading-msg">Uncorking the ledger…</div>';
       return;
@@ -419,6 +1321,13 @@
     var filtered = cocktails.filter(function(c) {
       if (currentFilter.category && c.category !== currentFilter.category) return false;
       if (currentFilter.status && c.status !== currentFilter.status) return false;
+      if (currentFilter.avail) {
+        var av = availability(c);
+        var st = av ? av.state : "none";
+        if (currentFilter.avail === "ready" && !(st === "ready" || st === "almost")) return false;
+        if (currentFilter.avail === "missing" && st !== "missing") return false;
+        if (currentFilter.avail === "unlinked" && st !== "none") return false;
+      }
       if (currentFilter.search) {
         var q = currentFilter.search.toLowerCase();
         var hay = [c.name || "", (c.ingredients || []).join(" "), c.spirit || "", c.notes || ""].join(" ").toLowerCase();
@@ -432,7 +1341,7 @@
       return;
     }
     if (!filtered.length) {
-      mainEl.innerHTML = '<div class="empty-state">Nothing matches — try a different search or filter.</div>';
+      mainEl.innerHTML = buildCocktailBanners() + '<div class="empty-state">Nothing matches — try a different search or filter.</div>';
       return;
     }
 
@@ -444,7 +1353,7 @@
     });
     var order = CATEGORIES.concat(Object.keys(byCategory).filter(function(c){ return CATEGORIES.indexOf(c) === -1; }));
 
-    var html = "";
+    var html = buildCocktailBanners();
     order.forEach(function(cat) {
       var items = byCategory[cat];
       if (!items || !items.length) return;
@@ -460,6 +1369,7 @@
         if (c.spirit) html += '<div class="card-spirit">' + escapeHtml(c.spirit) + '</div>';
         var ingLine = menuStyleIngredientsLine(c.ingredients);
         if (ingLine) html += '<div class="card-ingredients">' + escapeHtml(ingLine) + '</div>';
+        html += availabilityHtml(c);
         if (rating !== null) html += '<div class="card-rating">' + starsHtml(rating) + ' <span style="color:var(--text-faint);font-size:12px;">(' + rating.toFixed(1) + ')</span></div>';
         html += '</div>';
       });
@@ -497,6 +1407,7 @@
           '<div style="color:var(--text-dim);font-style:italic;margin-bottom:14px;">' + escapeHtml(c.category || "") + ' · ' + escapeHtml(statusLabel(c.status)) + '</div>' +
           (c.spirit ? '<div class="detail-section"><div class="detail-label">Spirit</div><div class="detail-value">' + escapeHtml(c.spirit) + '</div></div>' : '') +
           '<div class="detail-section"><div class="detail-label">Ingredients</div><ul class="detail-ingredients">' + (ingredientsHtml || '<li style="color:var(--text-faint);">None listed</li>') + '</ul></div>' +
+          stockCheckHtml(c) +
           (c.method ? '<div class="detail-section"><div class="detail-label">Method</div><div class="detail-value">' + escapeHtml(c.method) + '</div></div>' : '') +
           (c.notes ? '<div class="detail-section"><div class="detail-label">Notes</div><div class="detail-value">' + escapeHtml(c.notes) + '</div></div>' : '') +
           (c.nameStory ? '<div class="detail-section"><div class="detail-label">Name Story</div><div class="detail-value">' + escapeHtml(c.nameStory) + '</div></div>' : '') +
@@ -570,6 +1481,7 @@
           '<div class="field"><label>Status</label><select id="f_status">' + statusOptionsHtml + '</select></div>' +
           '<div class="field"><label>Spirit / Base</label><input type="text" id="f_spirit" value="' + escapeHtml(c.spirit || "") + '" placeholder="e.g. Bourbon, high-proof"></div>' +
           '<div class="field"><label>Ingredients</label><div id="ingredientsList">' + ingredientsRowsHtml() + '</div><button class="ghost" id="addIngBtn" type="button">+ Add Ingredient</button></div>' +
+          '<div class="field"><label>Linked Bar Stock items</label><div id="needsBox"></div></div>' +
           '<div class="field"><label>Method</label><textarea id="f_method" rows="3" placeholder="Stir / shake / build instructions…">' + escapeHtml(c.method || "") + '</textarea></div>' +
           '<div class="field"><label>Notes</label><textarea id="f_notes" rows="3" placeholder="Tips, variations, adjustments…">' + escapeHtml(c.notes || "") + '</textarea></div>' +
           '<div class="field"><label>Name Story</label><textarea id="f_nameStory" rows="2" placeholder="Meaning behind the name, who it' + "'" + 's for, etc.">' + escapeHtml(c.nameStory || "") + '</textarea></div>' +
@@ -603,6 +1515,11 @@
       div.querySelector("input").focus();
     });
 
+    function currentIngredientLines() {
+      return Array.prototype.map.call(document.querySelectorAll("#ingredientsList .ingredient-input"), function(inp) { return inp.value.trim(); }).filter(Boolean);
+    }
+    var picker = setupNeedsPicker(c, !isNew, currentIngredientLines);
+
     document.getElementById("saveBtn").addEventListener("click", function() {
       var name = document.getElementById("f_name").value.trim();
       if (!name) { alert("Please give the cocktail a name."); return; }
@@ -619,6 +1536,13 @@
         nameStory: document.getElementById("f_nameStory").value.trim(),
         source: document.getElementById("f_source").value.trim()
       };
+      if (picker.active) {
+        var known = getItemMap();
+        var chosen = (isNew && !picker.state.touched) ? suggestFromLines(ingredientsOut).ids : picker.state.needs;
+        data.needs = chosen.filter(function(id, i) { return known[id] && chosen.indexOf(id) === i; });
+      } else if (Array.isArray(c.needs)) {
+        data.needs = c.needs.slice();
+      }
       if (isNew) {
         data.id = slugify(data.name);
         data.tastingEntries = [];
@@ -664,7 +1588,7 @@
           '<div style="color:var(--text-dim);margin-bottom:14px;">Connect this device to your GitHub repo so your ledger syncs everywhere. This is entered once per device/browser.</div>' +
           '<div class="field"><label>GitHub Username</label><input type="text" id="s_owner" value="' + escapeHtml(s.owner) + '" placeholder="e.g. scottdavis"></div>' +
           '<div class="field"><label>Repository Name</label><input type="text" id="s_repo" value="' + escapeHtml(s.repo) + '" placeholder="e.g. speakeasy-ledger"></div>' +
-          '<div class="field"><label>Data File Path</label><input type="text" id="s_path" value="' + escapeHtml(s.path) + '" placeholder="cocktails.json"><div class="hint">Leave as cocktails.json unless you have a reason to change it.</div></div>' +
+          '<div class="field"><label>Data File Path</label><input type="text" id="s_path" value="' + escapeHtml(s.path) + '" placeholder="cocktails.json"><div class="hint">Leave as cocktails.json unless you have a reason to change it. Bar Stock is saved beside it as inventory.json.</div></div>' +
           '<div class="field"><label>Personal Access Token</label><input type="password" id="s_token" value="' + escapeHtml(s.token) + '" placeholder="ghp_… or github_pat_…"><div class="hint">Needs Contents: Read and write permission on this repo. Stored only in this browser.</div></div>' +
           '<div id="settingsError" class="error-box" style="display:none;"></div>' +
           '<div class="modal-actions"><div class="left"></div><button class="primary" id="saveSettingsBtn">Save &amp; Connect</button></div>' +
@@ -689,32 +1613,67 @@
       settings = { owner: owner, repo: repo, path: path, token: token };
       saveSettings(settings);
       closeModal();
-      isSyncing = true;
-      render();
-      fetchFromGitHub();
+      refreshAll();
     });
   }
 
   // ---------- Init ----------
 
+  INV_CATEGORIES.forEach(function(c) {
+    var opt = document.createElement("option");
+    opt.value = c; opt.textContent = c;
+    stockCategory.appendChild(opt);
+  });
+
   searchInput.addEventListener("input", function() { currentFilter.search = searchInput.value; render(); });
   categoryFilter.addEventListener("change", function() { currentFilter.category = categoryFilter.value; render(); });
   statusFilter.addEventListener("change", function() { currentFilter.status = statusFilter.value; render(); });
+  availFilter.addEventListener("change", function() { currentFilter.avail = availFilter.value; render(); });
   addBtn.addEventListener("click", function() { openEditModal(null); });
-  syncBtn.addEventListener("click", function() { isSyncing = true; render(); fetchFromGitHub(); });
+  syncBtn.addEventListener("click", refreshAll);
   settingsBtn.addEventListener("click", function() { openSettingsModal(false); });
 
+  stockSearch.addEventListener("input", function() { stockFilter.search = stockSearch.value; render(); });
+  stockCategory.addEventListener("change", function() { stockFilter.category = stockCategory.value; render(); });
+  stockShow.addEventListener("change", function() { stockFilter.show = stockShow.value; render(); });
+  document.getElementById("addItemBtn").addEventListener("click", function() { openItemModal(null); });
+  document.getElementById("shopBtn").addEventListener("click", openShoppingModal);
+  document.getElementById("syncBtn2").addEventListener("click", refreshAll);
+  document.getElementById("settingsBtn2").addEventListener("click", function() { openSettingsModal(false); });
+
+  tabCocktails.addEventListener("click", function() { setView("cocktails", true); });
+  tabStock.addEventListener("click", function() { setView("stock", true); });
+  window.addEventListener("hashchange", function() {
+    var want = (location.hash === "#stock") ? "stock" : "cocktails";
+    if (want !== currentView) setView(want, true);
+  });
+
+  mainEl.addEventListener("click", function(e) {
+    var el = e.target.closest ? e.target.closest("[data-act]") : null;
+    if (!el || !mainEl.contains(el)) return;
+    var act = el.getAttribute("data-act");
+    if (act === "setstatus") setItemStatus(el.getAttribute("data-id"), el.getAttribute("data-st"));
+    else if (act === "edititem") { var it = getItemMap()[el.getAttribute("data-id")]; if (it) openItemModal(it); }
+    else if (act === "markgroup") markGroupIn(el.getAttribute("data-cat"));
+    else if (act === "gostock") setView("stock", true);
+    else if (act === "autolink") autoLinkAll();
+  });
+
+  var startView = (location.hash === "#stock") ? "stock" : "cocktails";
   settings = loadSettings();
   if (!settings) {
     var cached = loadLocalCache();
     if (cached) { cocktails = cached.cocktails; currentSha = cached.sha; }
     else { cocktails = SEED_DATA.slice(); }
-    render();
+    var invCached = loadInventoryCache();
+    if (invCached) { inventory = invCached.items.map(normalizeItem); invChanged(); invSha = invCached.sha; invReady = true; }
+    setView(startView);
     openSettingsModal(true);
   } else {
-    isSyncing = true;
-    render();
+    isSyncing = true; invSyncing = true;
+    setView(startView);
     fetchFromGitHub();
+    fetchInventory();
   }
 })();
 </script>
