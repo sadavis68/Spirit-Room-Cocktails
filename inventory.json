@@ -1,0 +1,1347 @@
+{
+  "version": 1,
+  "items": [
+    {
+      "id": "bourbon",
+      "name": "Bourbon (everyday)",
+      "category": "Whiskey",
+      "kind": "bought",
+      "status": "out",
+      "aliases": [
+        "bourbon"
+      ],
+      "generic": true,
+      "minor": false,
+      "notes": ""
+    },
+    {
+      "id": "bourbon-high-proof",
+      "name": "Bourbon, high-proof (100+)",
+      "category": "Whiskey",
+      "kind": "bought",
+      "status": "out",
+      "aliases": [
+        "high proof",
+        "100+ proof",
+        "100 proof"
+      ],
+      "generic": false,
+      "minor": false,
+      "notes": ""
+    },
+    {
+      "id": "wheated-bourbon",
+      "name": "Wheated bourbon",
+      "category": "Whiskey",
+      "kind": "bought",
+      "status": "out",
+      "aliases": [
+        "wheated",
+        "maker's mark",
+        "makers mark"
+      ],
+      "generic": false,
+      "minor": false,
+      "notes": ""
+    },
+    {
+      "id": "middle-west-wheat",
+      "name": "Middle West Cask Strength Wheat Whiskey",
+      "category": "Whiskey",
+      "kind": "bought",
+      "status": "out",
+      "aliases": [
+        "middle west",
+        "cask strength wheat",
+        "wheat whiskey"
+      ],
+      "generic": false,
+      "minor": false,
+      "notes": ""
+    },
+    {
+      "id": "jackson-purchase",
+      "name": "Jackson Purchase Full Proof bourbon",
+      "category": "Whiskey",
+      "kind": "bought",
+      "status": "out",
+      "aliases": [
+        "jackson purchase"
+      ],
+      "generic": false,
+      "minor": false,
+      "notes": ""
+    },
+    {
+      "id": "knob-creek-smoked-maple",
+      "name": "Knob Creek Smoked Maple bourbon",
+      "category": "Whiskey",
+      "kind": "bought",
+      "status": "out",
+      "aliases": [
+        "knob creek",
+        "smoked maple"
+      ],
+      "generic": false,
+      "minor": false,
+      "notes": ""
+    },
+    {
+      "id": "rye",
+      "name": "Rye whiskey",
+      "category": "Whiskey",
+      "kind": "bought",
+      "status": "out",
+      "aliases": [
+        "rye",
+        "rye whiskey"
+      ],
+      "generic": true,
+      "minor": false,
+      "notes": ""
+    },
+    {
+      "id": "cognac",
+      "name": "Cognac (or brandy)",
+      "category": "Other Spirits",
+      "kind": "bought",
+      "status": "out",
+      "aliases": [
+        "cognac",
+        "brandy"
+      ],
+      "generic": false,
+      "minor": false,
+      "notes": ""
+    },
+    {
+      "id": "rhum-agricole",
+      "name": "Rhum agricole",
+      "category": "Other Spirits",
+      "kind": "bought",
+      "status": "out",
+      "aliases": [
+        "rhum agricole",
+        "agricole"
+      ],
+      "generic": false,
+      "minor": false,
+      "notes": ""
+    },
+    {
+      "id": "dark-rum",
+      "name": "Dark rum",
+      "category": "Other Spirits",
+      "kind": "bought",
+      "status": "out",
+      "aliases": [
+        "dark rum"
+      ],
+      "generic": true,
+      "minor": false,
+      "notes": ""
+    },
+    {
+      "id": "dark-rum-50",
+      "name": "Dark rum, 50% ABV",
+      "category": "Other Spirits",
+      "kind": "bought",
+      "status": "out",
+      "aliases": [
+        "50% abv",
+        "dark rum 50%"
+      ],
+      "generic": false,
+      "minor": false,
+      "notes": "Used in The Siren's Call"
+    },
+    {
+      "id": "jamaican-rum",
+      "name": "Jamaican rum (Jonah's Curse)",
+      "category": "Other Spirits",
+      "kind": "bought",
+      "status": "out",
+      "aliases": [
+        "jamaican rum",
+        "jonah's curse",
+        "jonahs curse"
+      ],
+      "generic": false,
+      "minor": false,
+      "notes": ""
+    },
+    {
+      "id": "gold-demerara-rum",
+      "name": "Gold Demerara rum",
+      "category": "Other Spirits",
+      "kind": "bought",
+      "status": "out",
+      "aliases": [
+        "demerara rum",
+        "gold demerara",
+        "gold rum"
+      ],
+      "generic": false,
+      "minor": false,
+      "notes": ""
+    },
+    {
+      "id": "white-rum",
+      "name": "White rum",
+      "category": "Other Spirits",
+      "kind": "bought",
+      "status": "out",
+      "aliases": [
+        "white rum",
+        "silver rum"
+      ],
+      "generic": false,
+      "minor": false,
+      "notes": ""
+    },
+    {
+      "id": "gin",
+      "name": "Gin (London Dry)",
+      "category": "Other Spirits",
+      "kind": "bought",
+      "status": "out",
+      "aliases": [
+        "gin"
+      ],
+      "generic": false,
+      "minor": false,
+      "notes": ""
+    },
+    {
+      "id": "blanco-tequila",
+      "name": "Blanco tequila",
+      "category": "Other Spirits",
+      "kind": "bought",
+      "status": "out",
+      "aliases": [
+        "blanco tequila",
+        "tequila",
+        "blanco"
+      ],
+      "generic": false,
+      "minor": false,
+      "notes": ""
+    },
+    {
+      "id": "mezcal",
+      "name": "Mezcal",
+      "category": "Other Spirits",
+      "kind": "bought",
+      "status": "out",
+      "aliases": [
+        "mezcal"
+      ],
+      "generic": false,
+      "minor": false,
+      "notes": ""
+    },
+    {
+      "id": "vodka",
+      "name": "Vodka",
+      "category": "Other Spirits",
+      "kind": "bought",
+      "status": "out",
+      "aliases": [
+        "vodka",
+        "tito's",
+        "titos"
+      ],
+      "generic": false,
+      "minor": false,
+      "notes": ""
+    },
+    {
+      "id": "peated-scotch",
+      "name": "Peated Scotch (optional variation)",
+      "category": "Other Spirits",
+      "kind": "bought",
+      "status": "out",
+      "aliases": [
+        "scotch",
+        "peated",
+        "laphroaig"
+      ],
+      "generic": false,
+      "minor": false,
+      "notes": ""
+    },
+    {
+      "id": "green-chartreuse",
+      "name": "Green Chartreuse",
+      "category": "Liqueurs, Vermouth & Amari",
+      "kind": "bought",
+      "status": "out",
+      "aliases": [
+        "chartreuse"
+      ],
+      "generic": false,
+      "minor": false,
+      "notes": ""
+    },
+    {
+      "id": "banana-liqueur",
+      "name": "Banana liqueur",
+      "category": "Liqueurs, Vermouth & Amari",
+      "kind": "bought",
+      "status": "out",
+      "aliases": [
+        "banana liqueur",
+        "creme de banane",
+        "banane",
+        "giffard"
+      ],
+      "generic": false,
+      "minor": false,
+      "notes": ""
+    },
+    {
+      "id": "nocino",
+      "name": "Nocino (walnut liqueur)",
+      "category": "Liqueurs, Vermouth & Amari",
+      "kind": "bought",
+      "status": "out",
+      "aliases": [
+        "nocino",
+        "walnut liqueur"
+      ],
+      "generic": false,
+      "minor": false,
+      "notes": ""
+    },
+    {
+      "id": "campari",
+      "name": "Campari",
+      "category": "Liqueurs, Vermouth & Amari",
+      "kind": "bought",
+      "status": "out",
+      "aliases": [
+        "campari"
+      ],
+      "generic": false,
+      "minor": false,
+      "notes": ""
+    },
+    {
+      "id": "sweet-vermouth",
+      "name": "Sweet vermouth",
+      "category": "Liqueurs, Vermouth & Amari",
+      "kind": "bought",
+      "status": "out",
+      "aliases": [
+        "sweet vermouth",
+        "rosso vermouth",
+        "vermouth"
+      ],
+      "generic": true,
+      "minor": false,
+      "notes": ""
+    },
+    {
+      "id": "punt-e-mes",
+      "name": "Punt e Mes (sweet vermouth)",
+      "category": "Liqueurs, Vermouth & Amari",
+      "kind": "bought",
+      "status": "out",
+      "aliases": [
+        "punt e mes"
+      ],
+      "generic": false,
+      "minor": false,
+      "notes": ""
+    },
+    {
+      "id": "dolin-blanc",
+      "name": "Dolin Blanc vermouth",
+      "category": "Liqueurs, Vermouth & Amari",
+      "kind": "bought",
+      "status": "out",
+      "aliases": [
+        "dolin",
+        "blanc vermouth"
+      ],
+      "generic": false,
+      "minor": false,
+      "notes": ""
+    },
+    {
+      "id": "aperol",
+      "name": "Aperol",
+      "category": "Liqueurs, Vermouth & Amari",
+      "kind": "bought",
+      "status": "out",
+      "aliases": [
+        "aperol"
+      ],
+      "generic": false,
+      "minor": false,
+      "notes": ""
+    },
+    {
+      "id": "fernet",
+      "name": "Fernet-Branca",
+      "category": "Liqueurs, Vermouth & Amari",
+      "kind": "bought",
+      "status": "out",
+      "aliases": [
+        "fernet",
+        "fernet branca"
+      ],
+      "generic": false,
+      "minor": false,
+      "notes": ""
+    },
+    {
+      "id": "meletti",
+      "name": "Meletti amaro",
+      "category": "Liqueurs, Vermouth & Amari",
+      "kind": "bought",
+      "status": "out",
+      "aliases": [
+        "meletti"
+      ],
+      "generic": false,
+      "minor": false,
+      "notes": ""
+    },
+    {
+      "id": "amaretto",
+      "name": "Lazzaroni amaretto",
+      "category": "Liqueurs, Vermouth & Amari",
+      "kind": "bought",
+      "status": "out",
+      "aliases": [
+        "amaretto",
+        "lazzaroni"
+      ],
+      "generic": false,
+      "minor": false,
+      "notes": ""
+    },
+    {
+      "id": "benedictine",
+      "name": "Bénédictine",
+      "category": "Liqueurs, Vermouth & Amari",
+      "kind": "bought",
+      "status": "out",
+      "aliases": [
+        "benedictine"
+      ],
+      "generic": false,
+      "minor": false,
+      "notes": ""
+    },
+    {
+      "id": "b-and-b",
+      "name": "B&B liqueur",
+      "category": "Liqueurs, Vermouth & Amari",
+      "kind": "bought",
+      "status": "out",
+      "aliases": [
+        "b&b",
+        "b & b",
+        "b and b"
+      ],
+      "generic": false,
+      "minor": false,
+      "notes": ""
+    },
+    {
+      "id": "absinthe",
+      "name": "Absinthe",
+      "category": "Liqueurs, Vermouth & Amari",
+      "kind": "bought",
+      "status": "out",
+      "aliases": [
+        "absinthe"
+      ],
+      "generic": false,
+      "minor": false,
+      "notes": ""
+    },
+    {
+      "id": "lillet",
+      "name": "Lillet Blanc",
+      "category": "Liqueurs, Vermouth & Amari",
+      "kind": "bought",
+      "status": "out",
+      "aliases": [
+        "lillet"
+      ],
+      "generic": false,
+      "minor": false,
+      "notes": ""
+    },
+    {
+      "id": "raspberry-liqueur",
+      "name": "Raspberry liqueur (optional)",
+      "category": "Liqueurs, Vermouth & Amari",
+      "kind": "bought",
+      "status": "out",
+      "aliases": [
+        "raspberry liqueur",
+        "chambord"
+      ],
+      "generic": false,
+      "minor": false,
+      "notes": ""
+    },
+    {
+      "id": "fino-sherry",
+      "name": "Fino sherry (optional)",
+      "category": "Liqueurs, Vermouth & Amari",
+      "kind": "bought",
+      "status": "out",
+      "aliases": [
+        "fino",
+        "sherry"
+      ],
+      "generic": false,
+      "minor": false,
+      "notes": ""
+    },
+    {
+      "id": "angostura",
+      "name": "Angostura bitters",
+      "category": "Bitters & Fat Washes",
+      "kind": "bought",
+      "status": "out",
+      "aliases": [
+        "angostura",
+        "aromatic bitters"
+      ],
+      "generic": false,
+      "minor": false,
+      "notes": ""
+    },
+    {
+      "id": "orange-bitters",
+      "name": "Orange bitters",
+      "category": "Bitters & Fat Washes",
+      "kind": "bought",
+      "status": "out",
+      "aliases": [
+        "orange bitters"
+      ],
+      "generic": false,
+      "minor": false,
+      "notes": ""
+    },
+    {
+      "id": "walnut-bitters",
+      "name": "Black walnut bitters",
+      "category": "Bitters & Fat Washes",
+      "kind": "bought",
+      "status": "out",
+      "aliases": [
+        "black walnut bitters",
+        "walnut bitters"
+      ],
+      "generic": false,
+      "minor": false,
+      "notes": ""
+    },
+    {
+      "id": "chocolate-bitters",
+      "name": "Chocolate bitters",
+      "category": "Bitters & Fat Washes",
+      "kind": "bought",
+      "status": "out",
+      "aliases": [
+        "chocolate bitters"
+      ],
+      "generic": false,
+      "minor": false,
+      "notes": ""
+    },
+    {
+      "id": "xocolatl-bitters",
+      "name": "Bittermens Xocolatl mole bitters",
+      "category": "Bitters & Fat Washes",
+      "kind": "bought",
+      "status": "out",
+      "aliases": [
+        "xocolatl",
+        "mole bitters",
+        "bittermens"
+      ],
+      "generic": false,
+      "minor": false,
+      "notes": ""
+    },
+    {
+      "id": "fatwash-butter",
+      "name": "Fee Brothers Browned Butter fat wash",
+      "category": "Bitters & Fat Washes",
+      "kind": "bought",
+      "status": "out",
+      "aliases": [
+        "browned butter"
+      ],
+      "generic": false,
+      "minor": false,
+      "notes": ""
+    },
+    {
+      "id": "fatwash-duck",
+      "name": "Fee Brothers Roasted Duck fat wash",
+      "category": "Bitters & Fat Washes",
+      "kind": "bought",
+      "status": "out",
+      "aliases": [
+        "roasted duck",
+        "duck fat"
+      ],
+      "generic": false,
+      "minor": false,
+      "notes": ""
+    },
+    {
+      "id": "fatwash-bacon",
+      "name": "Fee Brothers Bacon fat wash",
+      "category": "Bitters & Fat Washes",
+      "kind": "bought",
+      "status": "out",
+      "aliases": [
+        "bacon fat",
+        "bacon"
+      ],
+      "generic": false,
+      "minor": false,
+      "notes": ""
+    },
+    {
+      "id": "maple-syrup",
+      "name": "Maple syrup (real, dark)",
+      "category": "Syrups & Sweeteners",
+      "kind": "bought",
+      "status": "out",
+      "aliases": [
+        "maple syrup"
+      ],
+      "generic": false,
+      "minor": false,
+      "notes": ""
+    },
+    {
+      "id": "passion-fruit-syrup",
+      "name": "Passion fruit syrup",
+      "category": "Syrups & Sweeteners",
+      "kind": "bought",
+      "status": "out",
+      "aliases": [
+        "passion fruit syrup",
+        "passion fruit"
+      ],
+      "generic": false,
+      "minor": false,
+      "notes": ""
+    },
+    {
+      "id": "orgeat",
+      "name": "Orgeat",
+      "category": "Syrups & Sweeteners",
+      "kind": "bought",
+      "status": "out",
+      "aliases": [
+        "orgeat"
+      ],
+      "generic": false,
+      "minor": false,
+      "notes": ""
+    },
+    {
+      "id": "coconut-syrup",
+      "name": "Coconut syrup",
+      "category": "Syrups & Sweeteners",
+      "kind": "bought",
+      "status": "out",
+      "aliases": [
+        "coconut syrup"
+      ],
+      "generic": false,
+      "minor": false,
+      "notes": ""
+    },
+    {
+      "id": "magic-syrup",
+      "name": "Magic Syrup",
+      "category": "House-Made",
+      "kind": "made",
+      "status": "out",
+      "aliases": [
+        "magic syrup"
+      ],
+      "generic": false,
+      "minor": false,
+      "notes": "Brown sugar, toasted coconut, butterscotch + vanilla extract"
+    },
+    {
+      "id": "demerara-syrup",
+      "name": "Demerara syrup",
+      "category": "House-Made",
+      "kind": "made",
+      "status": "out",
+      "aliases": [
+        "demerara syrup"
+      ],
+      "generic": false,
+      "minor": false,
+      "notes": ""
+    },
+    {
+      "id": "honey-mix",
+      "name": "Honey mix",
+      "category": "House-Made",
+      "kind": "made",
+      "status": "out",
+      "aliases": [
+        "honey mix",
+        "honey syrup"
+      ],
+      "generic": false,
+      "minor": false,
+      "notes": ""
+    },
+    {
+      "id": "honey-pineapple-syrup",
+      "name": "Honey-pineapple syrup",
+      "category": "House-Made",
+      "kind": "made",
+      "status": "out",
+      "aliases": [
+        "honey pineapple syrup"
+      ],
+      "generic": false,
+      "minor": false,
+      "notes": "Keeps about 1 week"
+    },
+    {
+      "id": "lemon-simple-syrup",
+      "name": "Lemon simple syrup",
+      "category": "House-Made",
+      "kind": "made",
+      "status": "out",
+      "aliases": [
+        "lemon simple syrup"
+      ],
+      "generic": false,
+      "minor": false,
+      "notes": "Keeps about 2 weeks"
+    },
+    {
+      "id": "carrot-turmeric-syrup",
+      "name": "Carrot-turmeric syrup",
+      "category": "House-Made",
+      "kind": "made",
+      "status": "out",
+      "aliases": [
+        "carrot turmeric syrup"
+      ],
+      "generic": false,
+      "minor": false,
+      "notes": "Keeps 1-2 weeks"
+    },
+    {
+      "id": "hibiscus-syrup",
+      "name": "Hibiscus syrup",
+      "category": "House-Made",
+      "kind": "made",
+      "status": "out",
+      "aliases": [
+        "hibiscus syrup"
+      ],
+      "generic": false,
+      "minor": false,
+      "notes": ""
+    },
+    {
+      "id": "agave-syrup",
+      "name": "Agave syrup (1:1)",
+      "category": "House-Made",
+      "kind": "made",
+      "status": "out",
+      "aliases": [
+        "agave syrup",
+        "agave"
+      ],
+      "generic": false,
+      "minor": false,
+      "notes": "Equal parts agave nectar and warm water"
+    },
+    {
+      "id": "fig-syrup",
+      "name": "Fig syrup",
+      "category": "House-Made",
+      "kind": "made",
+      "status": "out",
+      "aliases": [
+        "fig syrup"
+      ],
+      "generic": false,
+      "minor": false,
+      "notes": ""
+    },
+    {
+      "id": "simple-syrup",
+      "name": "Simple syrup (1:1)",
+      "category": "House-Made",
+      "kind": "made",
+      "status": "out",
+      "aliases": [
+        "simple syrup"
+      ],
+      "generic": false,
+      "minor": false,
+      "notes": ""
+    },
+    {
+      "id": "house-amaro-mix",
+      "name": "House Amaro Mix",
+      "category": "House-Made",
+      "kind": "made",
+      "status": "out",
+      "aliases": [
+        "house amaro mix",
+        "amaro mix"
+      ],
+      "generic": false,
+      "minor": false,
+      "notes": "Equal parts Amaro Montenegro + Averna (or Ramazzotti)"
+    },
+    {
+      "id": "crunch-infusion",
+      "name": "Cap'n Crunch-infused whiskey",
+      "category": "House-Made",
+      "kind": "made",
+      "status": "out",
+      "aliases": [
+        "cap'n crunch infused",
+        "crunch infused",
+        "infused whiskey",
+        "cap'n crunch infusion"
+      ],
+      "generic": false,
+      "minor": false,
+      "notes": "3 cups Old Grand-Dad bonded + 1 cup Rittenhouse rye + 2 cups cereal, 24 hrs max"
+    },
+    {
+      "id": "saline",
+      "name": "Saline solution (10:1)",
+      "category": "House-Made",
+      "kind": "made",
+      "status": "out",
+      "aliases": [
+        "saline",
+        "saline solution"
+      ],
+      "generic": false,
+      "minor": true,
+      "notes": "10 parts water : 1 part salt"
+    },
+    {
+      "id": "pj-vinegar",
+      "name": "Pineapple-jalapeño vinegar",
+      "category": "House-Made",
+      "kind": "made",
+      "status": "out",
+      "aliases": [
+        "pineapple jalapeno vinegar",
+        "jalapeno vinegar",
+        "pineapple vinegar"
+      ],
+      "generic": false,
+      "minor": false,
+      "notes": "Homemade or store-bought"
+    },
+    {
+      "id": "limes",
+      "name": "Limes",
+      "category": "Juices, Fruit & Mixers",
+      "kind": "bought",
+      "status": "out",
+      "aliases": [
+        "lime",
+        "limes",
+        "lime juice",
+        "lime wheel",
+        "lime wheels",
+        "lime wedge",
+        "lime wedges"
+      ],
+      "generic": false,
+      "minor": false,
+      "notes": ""
+    },
+    {
+      "id": "lemons",
+      "name": "Lemons",
+      "category": "Juices, Fruit & Mixers",
+      "kind": "bought",
+      "status": "out",
+      "aliases": [
+        "lemon",
+        "lemons",
+        "lemon juice",
+        "lemon peel",
+        "lemon twist",
+        "lemon wheel"
+      ],
+      "generic": false,
+      "minor": false,
+      "notes": ""
+    },
+    {
+      "id": "oranges",
+      "name": "Oranges",
+      "category": "Juices, Fruit & Mixers",
+      "kind": "bought",
+      "status": "out",
+      "aliases": [
+        "orange",
+        "oranges",
+        "orange peel",
+        "orange twist",
+        "orange wheel",
+        "orange wheels",
+        "orange sail"
+      ],
+      "generic": false,
+      "minor": false,
+      "notes": ""
+    },
+    {
+      "id": "grapefruit",
+      "name": "Grapefruit (white)",
+      "category": "Juices, Fruit & Mixers",
+      "kind": "bought",
+      "status": "out",
+      "aliases": [
+        "grapefruit",
+        "grapefruit juice",
+        "white grapefruit juice"
+      ],
+      "generic": false,
+      "minor": false,
+      "notes": ""
+    },
+    {
+      "id": "grapefruit-soda",
+      "name": "Grapefruit soda (Squirt)",
+      "category": "Juices, Fruit & Mixers",
+      "kind": "bought",
+      "status": "out",
+      "aliases": [
+        "grapefruit soda",
+        "squirt"
+      ],
+      "generic": false,
+      "minor": false,
+      "notes": ""
+    },
+    {
+      "id": "pineapple-juice",
+      "name": "Pineapple juice",
+      "category": "Juices, Fruit & Mixers",
+      "kind": "bought",
+      "status": "out",
+      "aliases": [
+        "pineapple juice"
+      ],
+      "generic": false,
+      "minor": false,
+      "notes": ""
+    },
+    {
+      "id": "tangerine-juice",
+      "name": "Tangerine / clementine juice",
+      "category": "Juices, Fruit & Mixers",
+      "kind": "bought",
+      "status": "out",
+      "aliases": [
+        "tangerine",
+        "clementine"
+      ],
+      "generic": false,
+      "minor": false,
+      "notes": ""
+    },
+    {
+      "id": "club-soda",
+      "name": "Club soda / soda water",
+      "category": "Juices, Fruit & Mixers",
+      "kind": "bought",
+      "status": "out",
+      "aliases": [
+        "club soda",
+        "soda water",
+        "sparkling water",
+        "soda"
+      ],
+      "generic": false,
+      "minor": false,
+      "notes": ""
+    },
+    {
+      "id": "coconut-water",
+      "name": "Coconut water",
+      "category": "Juices, Fruit & Mixers",
+      "kind": "bought",
+      "status": "out",
+      "aliases": [
+        "coconut water"
+      ],
+      "generic": false,
+      "minor": false,
+      "notes": ""
+    },
+    {
+      "id": "raspberries",
+      "name": "Fresh raspberries",
+      "category": "Juices, Fruit & Mixers",
+      "kind": "bought",
+      "status": "out",
+      "aliases": [
+        "raspberries",
+        "raspberry"
+      ],
+      "generic": false,
+      "minor": false,
+      "notes": ""
+    },
+    {
+      "id": "jalapenos",
+      "name": "Jalapeños (fresh)",
+      "category": "Juices, Fruit & Mixers",
+      "kind": "bought",
+      "status": "out",
+      "aliases": [
+        "jalapeno",
+        "jalapenos",
+        "jalapeno slices"
+      ],
+      "generic": false,
+      "minor": false,
+      "notes": ""
+    },
+    {
+      "id": "coconut-cream",
+      "name": "Coconut cream (canned)",
+      "category": "Dairy, Egg & Foam",
+      "kind": "bought",
+      "status": "out",
+      "aliases": [
+        "coconut cream"
+      ],
+      "generic": false,
+      "minor": false,
+      "notes": ""
+    },
+    {
+      "id": "eggs",
+      "name": "Whole eggs",
+      "category": "Dairy, Egg & Foam",
+      "kind": "bought",
+      "status": "out",
+      "aliases": [
+        "whole egg",
+        "whole eggs",
+        "egg"
+      ],
+      "generic": false,
+      "minor": false,
+      "notes": ""
+    },
+    {
+      "id": "foam-agent",
+      "name": "Foam agent (egg white / aquafaba / Fee Foam)",
+      "category": "Dairy, Egg & Foam",
+      "kind": "bought",
+      "status": "out",
+      "aliases": [
+        "egg white",
+        "egg whites",
+        "aquafaba",
+        "fee foam",
+        "foam"
+      ],
+      "generic": false,
+      "minor": false,
+      "notes": ""
+    },
+    {
+      "id": "pickled-ginger-brine",
+      "name": "Pickled ginger brine",
+      "category": "Pantry & Specialty",
+      "kind": "bought",
+      "status": "out",
+      "aliases": [
+        "pickled ginger brine",
+        "ginger brine"
+      ],
+      "generic": false,
+      "minor": false,
+      "notes": ""
+    },
+    {
+      "id": "wood-chips",
+      "name": "Smoker wood chips (applewood / cherry)",
+      "category": "Pantry & Specialty",
+      "kind": "bought",
+      "status": "out",
+      "aliases": [
+        "smoke dome",
+        "applewood",
+        "cherry wood",
+        "wood chips",
+        "tableside smoke",
+        "smoke"
+      ],
+      "generic": false,
+      "minor": false,
+      "notes": ""
+    },
+    {
+      "id": "banana-chips",
+      "name": "Banana chips",
+      "category": "Garnishes & Extras",
+      "kind": "bought",
+      "status": "out",
+      "aliases": [
+        "banana chip",
+        "banana chips"
+      ],
+      "generic": false,
+      "minor": true,
+      "notes": ""
+    },
+    {
+      "id": "nutmeg",
+      "name": "Nutmeg (whole)",
+      "category": "Garnishes & Extras",
+      "kind": "bought",
+      "status": "out",
+      "aliases": [
+        "nutmeg"
+      ],
+      "generic": false,
+      "minor": true,
+      "notes": ""
+    },
+    {
+      "id": "cocktail-cherries",
+      "name": "Cocktail / Luxardo cherries",
+      "category": "Garnishes & Extras",
+      "kind": "bought",
+      "status": "out",
+      "aliases": [
+        "cocktail cherry",
+        "cocktail cherries",
+        "luxardo",
+        "luxardo cherry",
+        "cherry",
+        "cherries"
+      ],
+      "generic": false,
+      "minor": true,
+      "notes": ""
+    },
+    {
+      "id": "mint",
+      "name": "Fresh mint",
+      "category": "Garnishes & Extras",
+      "kind": "bought",
+      "status": "out",
+      "aliases": [
+        "mint",
+        "mint sprig",
+        "mint sprigs"
+      ],
+      "generic": false,
+      "minor": true,
+      "notes": ""
+    },
+    {
+      "id": "dark-chocolate",
+      "name": "Dark chocolate (for grating)",
+      "category": "Garnishes & Extras",
+      "kind": "bought",
+      "status": "out",
+      "aliases": [
+        "dark chocolate",
+        "grated chocolate"
+      ],
+      "generic": false,
+      "minor": true,
+      "notes": ""
+    },
+    {
+      "id": "sea-salt",
+      "name": "Flaky sea salt",
+      "category": "Garnishes & Extras",
+      "kind": "bought",
+      "status": "out",
+      "aliases": [
+        "sea salt",
+        "flaky salt",
+        "flaky sea salt",
+        "pinch of salt",
+        "salt"
+      ],
+      "generic": false,
+      "minor": true,
+      "notes": ""
+    },
+    {
+      "id": "coconut-flakes",
+      "name": "Toasted coconut flakes",
+      "category": "Garnishes & Extras",
+      "kind": "bought",
+      "status": "out",
+      "aliases": [
+        "coconut flakes"
+      ],
+      "generic": false,
+      "minor": true,
+      "notes": ""
+    },
+    {
+      "id": "edible-flowers",
+      "name": "Edible flowers",
+      "category": "Garnishes & Extras",
+      "kind": "bought",
+      "status": "out",
+      "aliases": [
+        "edible flower",
+        "edible flowers"
+      ],
+      "generic": false,
+      "minor": true,
+      "notes": ""
+    },
+    {
+      "id": "graham-crackers",
+      "name": "Graham crackers",
+      "category": "Garnishes & Extras",
+      "kind": "bought",
+      "status": "out",
+      "aliases": [
+        "graham cracker",
+        "graham crackers"
+      ],
+      "generic": false,
+      "minor": true,
+      "notes": ""
+    },
+    {
+      "id": "marshmallows",
+      "name": "Marshmallows",
+      "category": "Garnishes & Extras",
+      "kind": "bought",
+      "status": "out",
+      "aliases": [
+        "marshmallow",
+        "marshmallows"
+      ],
+      "generic": false,
+      "minor": true,
+      "notes": ""
+    },
+    {
+      "id": "blackberries",
+      "name": "Blackberries",
+      "category": "Garnishes & Extras",
+      "kind": "bought",
+      "status": "out",
+      "aliases": [
+        "blackberry",
+        "blackberries"
+      ],
+      "generic": false,
+      "minor": true,
+      "notes": ""
+    },
+    {
+      "id": "pineapple-wedge",
+      "name": "Fresh pineapple (wedges)",
+      "category": "Garnishes & Extras",
+      "kind": "bought",
+      "status": "out",
+      "aliases": [
+        "pineapple wedge",
+        "pineapple wedges",
+        "fresh pineapple"
+      ],
+      "generic": false,
+      "minor": true,
+      "notes": ""
+    },
+    {
+      "id": "figs",
+      "name": "Figs (fresh or dried slices)",
+      "category": "Garnishes & Extras",
+      "kind": "bought",
+      "status": "out",
+      "aliases": [
+        "fig quarter",
+        "fig slice",
+        "fresh fig",
+        "dried fig",
+        "figs",
+        "fig"
+      ],
+      "generic": false,
+      "minor": true,
+      "notes": ""
+    },
+    {
+      "id": "tajin",
+      "name": "Tajín / chile-lime salt",
+      "category": "Garnishes & Extras",
+      "kind": "bought",
+      "status": "out",
+      "aliases": [
+        "tajin",
+        "chile lime salt",
+        "chili lime salt",
+        "chile lime rim",
+        "chili lime rim"
+      ],
+      "generic": false,
+      "minor": true,
+      "notes": ""
+    },
+    {
+      "id": "origami-crane",
+      "name": "Origami crane (garnish)",
+      "category": "Garnishes & Extras",
+      "kind": "bought",
+      "status": "out",
+      "aliases": [
+        "origami crane"
+      ],
+      "generic": false,
+      "minor": true,
+      "notes": ""
+    },
+    {
+      "id": "crunch-cereal",
+      "name": "Cap'n Crunch cereal (garnish)",
+      "category": "Garnishes & Extras",
+      "kind": "bought",
+      "status": "out",
+      "aliases": [
+        "cap'n crunch cereal",
+        "crunch cereal",
+        "cereal"
+      ],
+      "generic": false,
+      "minor": true,
+      "notes": ""
+    }
+  ]
+}
