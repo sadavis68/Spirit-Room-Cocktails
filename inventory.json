@@ -1046,7 +1046,7 @@
       "name": "Whole eggs",
       "category": "Dairy, Egg & Foam",
       "kind": "bought",
-      "status": "out",
+      "status": "in",
       "aliases": [
         "whole egg",
         "whole eggs",
