@@ -64,7 +64,7 @@
       "name": "Jackson Purchase Full Proof bourbon",
       "category": "Whiskey",
       "kind": "bought",
-      "status": "out",
+      "status": "in",
       "aliases": [
         "jackson purchase"
       ],
