@@ -991,7 +991,7 @@
       "name": "Coconut water",
       "category": "Juices, Fruit & Mixers",
       "kind": "bought",
-      "status": "out",
+      "status": "low",
       "aliases": [
         "coconut water"
       ],
